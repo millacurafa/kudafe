@@ -1,0 +1,53 @@
+```{r}
+library(googleAnalyticsR)
+library(keyring)
+library(tidyverse)
+```
+
+```{r}
+
+options(googleAuthR.client_id = keyring::key_get(service = "ga_client_id", keyring = "googleanalytics"))
+
+options(googleAuthR.client_secret = keyring::key_get(service = "ga_client_secret", keyring = "googleanalytics"))
+
+devtools::reload(pkg = devtools::inst("googleAnalyticsR"))
+
+#Authenticate your account
+ga_auth()
+
+#Get a list of accounts you have access to
+account_list <- ga_account_list()
+
+#ViewID is the way to access the account you want
+viewid<- account_list$viewId[1]
+
+```
+```{r}
+# API calls 
+
+cc_page_overview <- google_analytics(viewid, 
+                 date_range = c("2020-03-15", "2020-04-12"), 
+                 metrics = c("pageviews","uniquePageviews","timeOnPage"), 
+                 dimensions = c("pagePath",
+                                "pageTitle",
+                                "landingPagePath",
+                                
+                                "exitPagePath",
+                                "pageDepth"), max = -1)
+```
+```{r}
+# Saving to csv file 
+
+```
+
+
+
+```{r}
+page_chanels <- google_analytics(viewid, 
+                 date_range = c("2020-03-15", "2020-04-12"), 
+                 metrics = c("pageviews"), 
+                 dimensions = c("pagePath",
+                                "pageTitle",
+                                "channelGrouping"))
+```
+

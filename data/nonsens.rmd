@@ -1,5 +1,0 @@
-```{r}
-"Hey Gents"
-"More nonsens"
-```
-
