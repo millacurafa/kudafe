@@ -37,7 +37,7 @@ cc_page_overview <- google_analytics(viewid,
 ```
 ```{r}
 # Saving to csv file 
-
+write_csv(cc_page_overview,"../pulled_data/cc_page_overview.csv")
 ```
 
 
@@ -45,9 +45,72 @@ cc_page_overview <- google_analytics(viewid,
 ```{r}
 page_chanels <- google_analytics(viewid, 
                  date_range = c("2020-03-15", "2020-04-12"), 
-                 metrics = c("pageviews"), 
-                 dimensions = c("pagePath",
-                                "pageTitle",
-                                "channelGrouping"))
+                 metrics = "pageviews", 
+                 dimensions = c("channelGrouping"),
+                  filters="ga:pagePath=~/webinars/"
+ )
+```
+```{r}
+write_csv(page_chanels,"../pulled_data/page_chanels.csv")
+
+```
+
+
+```{r}
+device_category <-  google_analytics(viewid, 
+                 date_range = c("2020-03-15", "2020-04-12"), 
+                 metrics = "pageviews", 
+                 dimensions = c("deviceCategory"),
+                  filters="ga:pagePath=~/webinars/")
+write_csv(device_category,"../pulled_data/device_category.csv")
+
+```
+
+```{r}
+source_medium <-  google_analytics(viewid, 
+                 date_range = c("2020-03-15", "2020-04-12"), 
+                 metrics = "pageviews", 
+                 dimensions = c("ga:medium","ga:sourceMedium"),
+                  filters="ga:pagePath=~/webinars/")
+```
+```{r}
+write_csv(source_medium,"../pulled_data/source_medium.csv")
+
+```
+
+```{r}
+landing_exit_page <-  google_analytics(viewid, 
+                 date_range = c("2020-03-15", "2020-04-12"), 
+                 metrics = "pageviews", 
+                 dimensions = c("ga:landingPagePath","ga:exitPagePath"),
+                  filters="ga:pagePath=~/webinars/")
+```
+```{r}
+write_csv(landing_exit_page,"../pulled_data/landing_exit_page.csv")
+
+```
+
+```{r}
+social_chanels <-  google_analytics(viewid, 
+                 date_range = c("2020-03-15", "2020-04-12"), 
+                 metrics = "pageviews", 
+                 dimensions = c("ga:socialNetwork"),
+                  filters="ga:pagePath=~/webinars/")
+```
+```{r}
+write_csv(social_chanels,"../pulled_data/social_chanels.csv")
+
+```
+
+```{r}
+age_brackets <-  google_analytics(viewid, 
+                 date_range = c("2020-03-15", "2020-04-12"), 
+                 metrics = "pageviews", 
+                 dimensions = c("ga:userAgeBracket"),
+                  filters="ga:pagePath=~/webinars/")
+```
+```{r}
+write_csv(age_brackets,"../pulled_data/age_brackets.csv")
+
 ```
 
