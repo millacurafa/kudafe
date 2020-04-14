@@ -2,6 +2,7 @@
 library(googleAnalyticsR)
 library(keyring)
 library(tidyverse)
+library(lubridate)
 ```
 
 ```{r}
@@ -44,11 +45,10 @@ write_csv(cc_page_overview,"../pulled_data/cc_page_overview.csv")
 
 ```{r}
 page_chanels <- google_analytics(viewid, 
-                 date_range = c("2020-03-15", "2020-04-12"), 
+                 date_range = c("2020-03-15", today()), 
                  metrics = "pageviews", 
                  dimensions = c("channelGrouping"),
-                  filters="ga:pagePath=~/webinars/"
- )
+                  filters="ga:pagePath=~/webinars/")
 ```
 ```{r}
 write_csv(page_chanels,"../pulled_data/page_chanels.csv")
@@ -112,5 +112,112 @@ age_brackets <-  google_analytics(viewid,
 ```{r}
 write_csv(age_brackets,"../pulled_data/age_brackets.csv")
 
+```
+
+```{r}
+
+
+```
+```{r}
+#previouse page 
+previouse_page <-  google_analytics(viewid, 
+                 date_range = c("2020-03-15","2020-04-12"), 
+                 metrics = c("pageviews","uniquePageviews"), 
+                 dimensions = c("ga:pageTitle",
+                                "pagePath",
+                                "ga:date",
+                                "ga:dayOfWeekName",
+                                "ga:previousPagePath"),
+                filters="ga:pagePath=~/webinars/" )
+
+
+write_csv(previouse_page,"../pulled_data/previouse_page.csv")
+
+
+```
+```{r}
+#landing page
+landing_page <-  google_analytics(viewid, 
+                 date_range = c("2020-03-15","2020-04-12"), 
+                 metrics = c("pageviews","uniquePageviews"), 
+                 dimensions = c("ga:pageTitle",
+                                "pagePath",
+                                "ga:date",
+                                "ga:dayOfWeekName",
+                                "ga:landingPagePath"),
+                filters="ga:pagePath=~/webinars/" )
+#csv write
+write_csv(landing_page,"../pulled_data/landing_page.csv")
+#write_csv(landing_page,"pulled_data")
+
+```
+
+```{r}
+# source media api call
+source_media <-  google_analytics(viewid, 
+                 date_range = c("2020-03-15","2020-04-12"), 
+                 metrics = c("pageviews","uniquePageviews"), 
+                 dimensions = c(
+                                "pagePath",
+                                "ga:date",
+                                "ga:dayOfWeekName",
+                                "ga:sourceMedium",
+                                "ga:source",
+                                "ga:medium",
+                                "ga:socialNetwork",
+                                "ga:hasSocialSourceReferral"
+                                
+                                ),
+                filters="ga:pagePath=~/webinars/" )
+
+# csv write up
+write_csv(source_media,"../pulled_data/source_media.csv")
+
+```
+
+
+```{r} 
+# api call for all pages. Needed for mesures and to join tables to get titles of landing pages and other
+all_pages_title <- google_analytics(viewid, 
+                 date_range = c("2020-03-15","2020-04-15"), 
+                 metrics = c("pageviews","ga:uniquePageviews"), 
+                 dimensions = c(
+                                "pagePath",
+                                "pageTitle"))
+                                
+write_csv(all_pages_title,"../pulled_data/all_pages_title.csv")
+                               
+```
+
+
+
+
+```{r}
+
+```
+
+
+
+
+```{r}
+# chunk of code where we pulling and joining data to get title pages for landing and exit pages
+# cleaning of the landing page path is needed mayby str_split will do :)
+landing_page <-  google_analytics(102407343, 
+                                  date_range = c("2019-03-18","2020-03-18"), 
+                                  metrics = "pageviews", 
+                                  dimensions = c("ga:pageTitle",
+                                                 "pagePath",
+                                                 "ga:date",
+                                                 "ga:dayOfWeekName",
+                                                 "ga:landingPagePath"),
+                                  filters="ga:pagePath=~/webinars/" )
+all_pages <-  google_analytics(102407343, 
+                                  date_range = c("2020-03-18","2020-03-18"), 
+                                  metrics = "pageviews", 
+                                  dimensions = c("ga:pageTitle",
+                                                 "ga:pagePath"), max = -1) %>% 
+                select(-pageviews) 
+test_join <- landing_page %>%
+  left_join(all_pages, by = c("landingPagePath" = "pagePath"))
 ```
 
