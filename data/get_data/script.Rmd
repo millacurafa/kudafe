@@ -104,7 +104,7 @@ write_csv(social_chanels,"../pulled_data/social_chanels.csv")
 
 ```{r}
 age_brackets <-  google_analytics(viewid, 
-                 date_range = c("2020-03-15", "2020-04-12"), 
+                 date_range = c("2020-03-15",as.character(today()) ), 
                  metrics = "pageviews", 
                  dimensions = c("ga:userAgeBracket"),
                   filters="ga:pagePath=~/webinars/")
@@ -114,14 +114,13 @@ write_csv(age_brackets,"../pulled_data/age_brackets.csv")
 
 ```
 
-```{r}
 
 
-```
+14 April
 ```{r}
 #previouse page 
 previouse_page <-  google_analytics(viewid, 
-                 date_range = c("2020-03-15","2020-04-12"), 
+                 date_range = c("2020-03-15",as.character(today())), 
                  metrics = c("pageviews","uniquePageviews"), 
                  dimensions = c("ga:pageTitle",
                                 "pagePath",
@@ -138,7 +137,7 @@ write_csv(previouse_page,"../pulled_data/previouse_page.csv")
 ```{r}
 #landing page
 landing_page <-  google_analytics(viewid, 
-                 date_range = c("2020-03-15","2020-04-12"), 
+                 date_range = c("2020-03-15",as.character(today())), 
                  metrics = c("pageviews","uniquePageviews"), 
                  dimensions = c("ga:pageTitle",
                                 "pagePath",
@@ -155,7 +154,7 @@ write_csv(landing_page,"../pulled_data/landing_page.csv")
 ```{r}
 # source media api call
 source_media <-  google_analytics(viewid, 
-                 date_range = c("2020-03-15","2020-04-12"), 
+                 date_range = c("2020-03-15",as.character(today())), 
                  metrics = c("pageviews","uniquePageviews"), 
                  dimensions = c(
                                 "pagePath",
@@ -179,7 +178,7 @@ write_csv(source_media,"../pulled_data/source_media.csv")
 ```{r} 
 # api call for all pages. Needed for mesures and to join tables to get titles of landing pages and other
 all_pages_title <- google_analytics(viewid, 
-                 date_range = c("2020-03-15","2020-04-15"), 
+                 date_range = c("2020-03-15",as.character(today())), 
                  metrics = c("pageviews","ga:uniquePageviews"), 
                  dimensions = c(
                                 "pagePath",
@@ -219,5 +218,14 @@ all_pages <-  google_analytics(102407343,
                 select(-pageviews) 
 test_join <- landing_page %>%
   left_join(all_pages, by = c("landingPagePath" = "pagePath"))
+```
+
+```{r}
+fixing_date <- google_analytics(viewid, 
+                 date_range = c("2020-03-15",as.character(today()) ), 
+                 metrics = c("pageviews","ga:uniquePageviews"), 
+                 dimensions = c(
+                                "pagePath",
+                                "pageTitle"))
 ```
 

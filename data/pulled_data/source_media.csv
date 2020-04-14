@@ -146,6 +146,18 @@ pagePath,date,dayOfWeekName,sourceMedium,source,medium,socialNetwork,hasSocialSo
 /webinars/,2020-04-11,Saturday,forms.zohopublic.eu / referral,forms.zohopublic.eu,referral,(not set),No,1,1
 /webinars/,2020-04-12,Sunday,google / organic,google,organic,(not set),No,3,2
 /webinars/,2020-04-12,Sunday,lm.facebook.com / referral,lm.facebook.com,referral,Facebook,Yes,2,1
+/webinars/,2020-04-13,Monday,(direct) / (none),(direct),(none),(not set),No,7,7
+/webinars/,2020-04-13,Monday,analytics.google.com / referral,analytics.google.com,referral,(not set),No,3,2
+/webinars/,2020-04-13,Monday,google / cpc,google,cpc,(not set),No,5,5
+/webinars/,2020-04-13,Monday,google / organic,google,organic,(not set),No,7,5
+/webinars/,2020-04-13,Monday,gstatic.com / referral,gstatic.com,referral,(not set),No,1,1
+/webinars/,2020-04-13,Monday,l.facebook.com / referral,l.facebook.com,referral,Facebook,Yes,1,1
+/webinars/,2020-04-13,Monday,t.co / referral,t.co,referral,Twitter,Yes,2,2
+/webinars/,2020-04-14,Tuesday,(direct) / (none),(direct),(none),(not set),No,6,6
+/webinars/,2020-04-14,Tuesday,analytics.google.com / referral,analytics.google.com,referral,(not set),No,1,1
+/webinars/,2020-04-14,Tuesday,google / cpc,google,cpc,(not set),No,6,5
+/webinars/,2020-04-14,Tuesday,google / organic,google,organic,(not set),No,4,4
+/webinars/,2020-04-14,Tuesday,t.co / referral,t.co,referral,Twitter,Yes,3,2
 /webinars/?elementor-preview=19875&ver=1584633159,2020-03-19,Thursday,Website Subscribers / email,Website Subscribers,email,(not set),No,1,1
 /webinars/?elementor-preview=19875&ver=1584633159,2020-04-12,Sunday,analytics.google.com / referral,analytics.google.com,referral,(not set),No,1,1
 /webinars/?elementor-preview=19875&ver=1584970506,2020-03-23,Monday,us11.admin.mailchimp.com / referral,us11.admin.mailchimp.com,referral,(not set),No,1,1
@@ -164,11 +176,14 @@ pagePath,date,dayOfWeekName,sourceMedium,source,medium,socialNetwork,hasSocialSo
 /webinars/?elementor-preview=19875&ver=1586432823,2020-04-09,Thursday,CodeClan Employer Partners 2018 / email,CodeClan Employer Partners 2018,email,(not set),No,1,1
 /webinars/?elementor-preview=19875&ver=1586516409,2020-04-10,Friday,analytics.google.com / referral,analytics.google.com,referral,(not set),No,1,1
 /webinars/?elementor-preview=19875&ver=1586520669,2020-04-10,Friday,analytics.google.com / referral,analytics.google.com,referral,(not set),No,1,1
+/webinars/?elementor-preview=19875&ver=1586769400,2020-04-13,Monday,analytics.google.com / referral,analytics.google.com,referral,(not set),No,1,1
+/webinars/?elementor-preview=19875&ver=1586775164,2020-04-13,Monday,analytics.google.com / referral,analytics.google.com,referral,(not set),No,1,1
 /webinars/?fbclid=IwAR0DVoAHsDKhn1COx3wbeId2RmyGGwkN6YeEVqGCgzq9SXCFDqyEYFyeEes,2020-03-31,Tuesday,facebook.com / referral,facebook.com,referral,Facebook,Yes,1,1
 /webinars/?fbclid=IwAR0YsGs8frnLyu1Q9YQTE3eXZWtcHosku97_KkQWBi4D52UEDUmGKmtO2Yc,2020-03-19,Thursday,facebook.com / referral,facebook.com,referral,Facebook,Yes,1,1
 /webinars/?fbclid=IwAR1ZjALev-prSz7RnhjJBGjfzgkizKP-nxDt67FrR_reT6hPhIoyhvxwcV8,2020-03-19,Thursday,facebook.com / referral,facebook.com,referral,Facebook,Yes,1,1
 /webinars/?fbclid=IwAR2c7SPZcRR9idpP_kctJRycgeq8RqvgWd1NCJBlfEipulvbgvpscr34WCs,2020-03-19,Thursday,m.facebook.com / referral,m.facebook.com,referral,Facebook,Yes,1,1
 /webinars/?fbclid=IwAR2h2oGSxo4ew1QYxMdZVttw6_-wO-pFBSYDUNrZPIJ8vlTJNHpz8m_dtrE,2020-04-12,Sunday,l.facebook.com / referral,l.facebook.com,referral,Facebook,Yes,1,1
+/webinars/?fbclid=IwAR2h2oGSxo4ew1QYxMdZVttw6_-wO-pFBSYDUNrZPIJ8vlTJNHpz8m_dtrE,2020-04-13,Monday,google / organic,google,organic,(not set),No,1,1
 /webinars/?fbclid=IwAR2kf07Fi3y1C4MVIlAxakYlB3HJ90jmqgXk9pq3JPyoA21zNOwTNMF4KSM,2020-03-19,Thursday,m.facebook.com / referral,m.facebook.com,referral,Facebook,Yes,1,1
 /webinars/?fbclid=IwAR2kf07Fi3y1C4MVIlAxakYlB3HJ90jmqgXk9pq3JPyoA21zNOwTNMF4KSM,2020-04-04,Saturday,m.facebook.com / referral,m.facebook.com,referral,Facebook,Yes,2,1
 /webinars/?fbclid=IwAR2Kp5S_h3fYqq1Raha_5Df2c59GWd0VYFmvVdRk0VC6xm8MXHoMu8PRhR4,2020-03-19,Thursday,facebook.com / referral,facebook.com,referral,Facebook,Yes,1,1
