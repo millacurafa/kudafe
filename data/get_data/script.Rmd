@@ -3,6 +3,7 @@ library(googleAnalyticsR)
 library(keyring)
 library(tidyverse)
 library(lubridate)
+library(janitor)
 ```
 
 ```{r}
@@ -27,7 +28,7 @@ viewid<- account_list$viewId[1]
 # API calls 
 
 cc_page_overview <- google_analytics(viewid, 
-                 date_range = c("2020-03-15", "2020-04-12"), 
+                 date_range = c("2020-03-15", as.character(today()) ), 
                  metrics = c("pageviews","uniquePageviews","timeOnPage"), 
                  dimensions = c("pagePath",
                                 "pageTitle",
@@ -45,10 +46,10 @@ write_csv(cc_page_overview,"../pulled_data/cc_page_overview.csv")
 
 ```{r}
 page_chanels <- google_analytics(viewid, 
-                 date_range = c("2020-03-15", today()), 
+                 date_range = c("2020-03-15", as.character(today())) , 
                  metrics = "pageviews", 
                  dimensions = c("channelGrouping"),
-                  filters="ga:pagePath=~/webinars/")
+                  filters="ga:pagePath=~/webinars/") %>% clean_names()
 ```
 ```{r}
 write_csv(page_chanels,"../pulled_data/page_chanels.csv")
@@ -58,44 +59,38 @@ write_csv(page_chanels,"../pulled_data/page_chanels.csv")
 
 ```{r}
 device_category <-  google_analytics(viewid, 
-                 date_range = c("2020-03-15", "2020-04-12"), 
+                 date_range = c("2020-03-15",as.character(today()) ), 
                  metrics = "pageviews", 
                  dimensions = c("deviceCategory"),
-                  filters="ga:pagePath=~/webinars/")
+                  filters="ga:pagePath=~/webinars/") %>% 
+  clean_names()
 write_csv(device_category,"../pulled_data/device_category.csv")
 
 ```
 
 ```{r}
 source_medium <-  google_analytics(viewid, 
-                 date_range = c("2020-03-15", "2020-04-12"), 
+                 date_range = c("2020-03-15", as.character(today()) ), 
                  metrics = "pageviews", 
                  dimensions = c("ga:medium","ga:sourceMedium"),
-                  filters="ga:pagePath=~/webinars/")
+                  filters="ga:pagePath=~/webinars/") %>% clean_names()
 ```
 ```{r}
 write_csv(source_medium,"../pulled_data/source_medium.csv")
 
 ```
 
-```{r}
-landing_exit_page <-  google_analytics(viewid, 
-                 date_range = c("2020-03-15", "2020-04-12"), 
-                 metrics = "pageviews", 
-                 dimensions = c("ga:landingPagePath","ga:exitPagePath"),
-                  filters="ga:pagePath=~/webinars/")
-```
-```{r}
-write_csv(landing_exit_page,"../pulled_data/landing_exit_page.csv")
 
-```
+
+
+
 
 ```{r}
 social_chanels <-  google_analytics(viewid, 
-                 date_range = c("2020-03-15", "2020-04-12"), 
+                 date_range = c("2020-03-15",as.character(today()) ),
                  metrics = "pageviews", 
                  dimensions = c("ga:socialNetwork"),
-                  filters="ga:pagePath=~/webinars/")
+                  filters="ga:pagePath=~/webinars/") %>% clean_names()
 ```
 ```{r}
 write_csv(social_chanels,"../pulled_data/social_chanels.csv")
@@ -107,7 +102,7 @@ age_brackets <-  google_analytics(viewid,
                  date_range = c("2020-03-15",as.character(today()) ), 
                  metrics = "pageviews", 
                  dimensions = c("ga:userAgeBracket"),
-                  filters="ga:pagePath=~/webinars/")
+                  filters="ga:pagePath=~/webinars/") %>% clean_names()
 ```
 ```{r}
 write_csv(age_brackets,"../pulled_data/age_brackets.csv")
@@ -127,13 +122,17 @@ previouse_page <-  google_analytics(viewid,
                                 "ga:date",
                                 "ga:dayOfWeekName",
                                 "ga:previousPagePath"),
-                filters="ga:pagePath=~/webinars/" )
-
-
+                filters="ga:pagePath=~/webinars/" ) %>% clean_names() %>% 
+  separate(previous_page_path,into = c("url","after_?"),sep = "[?]") 
+```
+```{r}
 write_csv(previouse_page,"../pulled_data/previouse_page.csv")
 
-
 ```
+
+
+
+
 ```{r}
 #landing page
 landing_page <-  google_analytics(viewid, 
@@ -144,7 +143,9 @@ landing_page <-  google_analytics(viewid,
                                 "ga:date",
                                 "ga:dayOfWeekName",
                                 "ga:landingPagePath"),
-                filters="ga:pagePath=~/webinars/" )
+                filters="ga:pagePath=~/webinars/" ) %>% clean_names() %>% 
+  separate(landing_page_path,into = c("url","after_?"),sep = "[?]") 
+
 #csv write
 write_csv(landing_page,"../pulled_data/landing_page.csv")
 #write_csv(landing_page,"pulled_data")
@@ -167,7 +168,8 @@ source_media <-  google_analytics(viewid,
                                 "ga:hasSocialSourceReferral"
                                 
                                 ),
-                filters="ga:pagePath=~/webinars/" )
+                filters="ga:pagePath=~/webinars/" ) %>% clean_names() 
+  
 
 # csv write up
 write_csv(source_media,"../pulled_data/source_media.csv")
@@ -182,7 +184,9 @@ all_pages_title <- google_analytics(viewid,
                  metrics = c("pageviews","ga:uniquePageviews"), 
                  dimensions = c(
                                 "pagePath",
-                                "pageTitle"))
+                                "pageTitle")) %>% clean_names() %>% 
+    separate(page_path,into = c("url","after_?"),sep = "[?]") 
+
                                 
 write_csv(all_pages_title,"../pulled_data/all_pages_title.csv")
                                
@@ -220,12 +224,6 @@ test_join <- landing_page %>%
   left_join(all_pages, by = c("landingPagePath" = "pagePath"))
 ```
 
-```{r}
-fixing_date <- google_analytics(viewid, 
-                 date_range = c("2020-03-15",as.character(today()) ), 
-                 metrics = c("pageviews","ga:uniquePageviews"), 
-                 dimensions = c(
-                                "pagePath",
-                                "pageTitle"))
-```
+
+
 

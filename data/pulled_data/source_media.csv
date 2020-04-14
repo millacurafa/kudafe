@@ -1,4 +1,4 @@
-pagePath,date,dayOfWeekName,sourceMedium,source,medium,socialNetwork,hasSocialSourceReferral,pageviews,uniquePageviews
+page_path,date,day_of_week_name,source_medium,source,medium,social_network,has_social_source_referral,pageviews,unique_pageviews
 /webinars/,2020-03-18,Wednesday,Alumni Dec 2019 / email,Alumni Dec 2019,email,(not set),No,1,1
 /webinars/,2020-03-18,Wednesday,Website Subscribers / email,Website Subscribers,email,(not set),No,4,3
 /webinars/,2020-03-19,Thursday,(direct) / (none),(direct),(none),(not set),No,10,7
