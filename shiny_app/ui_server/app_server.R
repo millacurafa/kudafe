@@ -17,6 +17,9 @@ server <- function(input, output) {
     hist(x, breaks = bins, col = "#75AADB", border = "white",
          xlab = "Waiting time to next eruption (in mins)",
          main = "Histogram of waiting times")
+    # You can access the values of the widget (as a vector of Dates)
+    # with input$dates, e.g.
+    output$value <- renderPrint({ input$dates })
     
   })
   

@@ -32,6 +32,10 @@ ui <- fluidPage(
                   value = 30)
       
     ),
+    # Cdate range selector
+    dateRangeInput("dates", label = h3("Date range")),
+    hr(),
+    fluidRow(column(4, verbatimTextOutput("value"))),
     # ---- Ends Sidebar panel for inputs ----
     # ---- Main panel for displaying outputs ----
     mainPanel(
