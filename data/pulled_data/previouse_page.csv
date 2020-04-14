@@ -1,14 +1,14 @@
-page_title,page_path,date,day_of_week_name,previous_page_path,pageviews,unique_pageviews
+page_title,page_path,date,day_of_week_name,previous_page_url,pageviews,unique_pageviews
 Webinars - CodeClan,/webinars/,2020-03-18,Wednesday,(entrance),1,1
 Webinars - CodeClan,/webinars/,2020-03-18,Wednesday,/about-us/,1,1
 Webinars - CodeClan,/webinars/,2020-03-18,Wednesday,/coronavirus/,2,1
-Webinars - CodeClan,/webinars/,2020-03-18,Wednesday,/courses/professional-software-development/?ct=t(Virtual+Learning+Experience+Update)&mc_cid=345c4ed3c2&mc_eid=[UNIQID],1,1
+Webinars - CodeClan,/webinars/,2020-03-18,Wednesday,/courses/professional-software-development/,1,1
 Webinars - CodeClan,/webinars/,2020-03-19,Thursday,(entrance),12,12
 Webinars - CodeClan,/webinars/,2020-03-19,Thursday,/,6,4
 Webinars - CodeClan,/webinars/,2020-03-19,Thursday,/courses/data-analysis/,1,1
 Webinars - CodeClan,/webinars/,2020-03-19,Thursday,/courses/data-analysis/cost-and-funding/,1,0
 Webinars - CodeClan,/webinars/,2020-03-19,Thursday,/courses/professional-software-development/,2,1
-Webinars - CodeClan,/webinars/,2020-03-19,Thursday,/courses/professional-software-development/?elementor-preview=23&ver=1584633212,1,0
+Webinars - CodeClan,/webinars/,2020-03-19,Thursday,/courses/professional-software-development/,1,0
 Webinars - CodeClan,/webinars/,2020-03-19,Thursday,/courses/understanding-software-development/,1,0
 Webinars - CodeClan,/webinars/,2020-03-19,Thursday,/webinars/,1,0
 Webinars - CodeClan,/webinars/,2020-03-20,Friday,(entrance),4,4
@@ -16,7 +16,7 @@ Webinars - CodeClan,/webinars/,2020-03-20,Friday,/,2,2
 Webinars - CodeClan,/webinars/,2020-03-20,Friday,/courses/,1,1
 Webinars - CodeClan,/webinars/,2020-03-20,Friday,/courses/data-analysis/,1,1
 Webinars - CodeClan,/webinars/,2020-03-20,Friday,/courses/professional-software-development/,1,1
-Webinars - CodeClan,/webinars/,2020-03-20,Friday,/courses/professional-software-development/?ct=t(Webinar+update)&mc_cid=fbf9a00785&mc_eid=[UNIQID],1,1
+Webinars - CodeClan,/webinars/,2020-03-20,Friday,/courses/professional-software-development/,1,1
 Webinars - CodeClan,/webinars/,2020-03-20,Friday,/Edinburgh/,1,1
 Webinars - CodeClan,/webinars/,2020-03-20,Friday,/the-codeclan-experience/,1,0
 Webinars - CodeClan,/webinars/,2020-03-21,Saturday,(entrance),1,1
@@ -27,14 +27,14 @@ Webinars - CodeClan,/webinars/,2020-03-21,Saturday,/courses/professional-softwar
 Webinars - CodeClan,/webinars/,2020-03-21,Saturday,/glasgow/,1,1
 Webinars - CodeClan,/webinars/,2020-03-22,Sunday,(entrance),2,2
 Webinars - CodeClan,/webinars/,2020-03-22,Sunday,/,1,1
-Webinars - CodeClan,/webinars/,2020-03-22,Sunday,/coronavirus/?ct=t(Webinar+update)&mc_cid=fbf9a00785&mc_eid=[UNIQID],1,1
+Webinars - CodeClan,/webinars/,2020-03-22,Sunday,/coronavirus/,1,1
 Webinars - CodeClan,/webinars/,2020-03-22,Sunday,/courses/data-analysis/,1,1
 Webinars - CodeClan,/webinars/,2020-03-22,Sunday,/courses/professional-software-development/,1,1
 Webinars - CodeClan,/webinars/,2020-03-22,Sunday,/glasgow/,2,2
 Webinars - CodeClan,/webinars/,2020-03-23,Monday,(entrance),3,3
 Webinars - CodeClan,/webinars/,2020-03-23,Monday,/,5,5
 Webinars - CodeClan,/webinars/,2020-03-23,Monday,/coronavirus/,2,2
-Webinars - CodeClan,/webinars/,2020-03-23,Monday,/coronavirus/?ct=t(Webinar+update_COPY_01)&mc_cid=2c858a035b&mc_eid=[UNIQID],1,1
+Webinars - CodeClan,/webinars/,2020-03-23,Monday,/coronavirus/,1,1
 Webinars - CodeClan,/webinars/,2020-03-23,Monday,/courses/data-analysis/,2,2
 Webinars - CodeClan,/webinars/,2020-03-23,Monday,/glasgow/,1,1
 Webinars - CodeClan,/webinars/,2020-03-24,Tuesday,(entrance),4,4
@@ -89,7 +89,7 @@ Webinars - CodeClan,/webinars/,2020-03-30,Monday,/courses/,1,1
 Webinars - CodeClan,/webinars/,2020-03-30,Monday,/courses/agile-for-effective-teams/,1,1
 Webinars - CodeClan,/webinars/,2020-03-30,Monday,/courses/data-analysis/,1,1
 Webinars - CodeClan,/webinars/,2020-03-30,Monday,/courses/professional-software-development/,1,1
-Webinars - CodeClan,/webinars/,2020-03-30,Monday,/webinars/?elementor-preview=19875&ver=1585578056,1,0
+Webinars - CodeClan,/webinars/,2020-03-30,Monday,/webinars/,1,0
 Webinars - CodeClan,/webinars/,2020-03-31,Tuesday,(entrance),19,19
 Webinars - CodeClan,/webinars/,2020-03-31,Tuesday,/,6,5
 Webinars - CodeClan,/webinars/,2020-03-31,Tuesday,/2020-new-data-analysis/,1,1
@@ -99,7 +99,7 @@ Webinars - CodeClan,/webinars/,2020-03-31,Tuesday,/courses/professional-software
 Webinars - CodeClan,/webinars/,2020-03-31,Tuesday,/courses/professional-software-development/apply/,1,1
 Webinars - CodeClan,/webinars/,2020-03-31,Tuesday,/the-codeclan-experience/a-typical-day/,1,1
 Webinars - CodeClan,/webinars/,2020-03-31,Tuesday,/webinars/,2,0
-Webinars - CodeClan,/webinars/,2020-03-31,Tuesday,/webinars/?elementor-preview=19875&ver=1585645037,1,0
+Webinars - CodeClan,/webinars/,2020-03-31,Tuesday,/webinars/,1,0
 Webinars - CodeClan,/webinars/,2020-04-01,Wednesday,(entrance),10,10
 Webinars - CodeClan,/webinars/,2020-04-01,Wednesday,/,2,2
 Webinars - CodeClan,/webinars/,2020-04-01,Wednesday,/about-us/,1,1
@@ -150,7 +150,7 @@ Webinars - CodeClan,/webinars/,2020-04-07,Tuesday,/,9,8
 Webinars - CodeClan,/webinars/,2020-04-07,Tuesday,/courses/understanding-software-development/,1,1
 Webinars - CodeClan,/webinars/,2020-04-07,Tuesday,/for-employers/become-a-partner/,1,1
 Webinars - CodeClan,/webinars/,2020-04-07,Tuesday,/webinars/,1,0
-Webinars - CodeClan,/webinars/,2020-04-07,Tuesday,/webinars/?elementor-preview=19875&ver=1586269278,1,0
+Webinars - CodeClan,/webinars/,2020-04-07,Tuesday,/webinars/,1,0
 Webinars - CodeClan,/webinars/,2020-04-08,Wednesday,(entrance),14,14
 Webinars - CodeClan,/webinars/,2020-04-08,Wednesday,/,8,6
 Webinars - CodeClan,/webinars/,2020-04-08,Wednesday,/2020-new-data-analysis/,1,0
@@ -168,13 +168,13 @@ Webinars - CodeClan,/webinars/,2020-04-09,Thursday,/,4,3
 Webinars - CodeClan,/webinars/,2020-04-09,Thursday,/about-us/our-team/,1,1
 Webinars - CodeClan,/webinars/,2020-04-09,Thursday,/blog/meet-the-team-katie-jeffree/,1,1
 Webinars - CodeClan,/webinars/,2020-04-09,Thursday,/courses/data-analysis/,2,2
-Webinars - CodeClan,/webinars/,2020-04-09,Thursday,/courses/data-analysis/?elementor-preview=26451&ver=1586421884,1,0
-Webinars - CodeClan,/webinars/,2020-04-09,Thursday,/courses/data-analysis/?elementor-preview=26451&ver=1586422155,1,0
-Webinars - CodeClan,/webinars/,2020-04-09,Thursday,/courses/data-analysis/?elementor-preview=26451&ver=1586430838,1,1
+Webinars - CodeClan,/webinars/,2020-04-09,Thursday,/courses/data-analysis/,1,0
+Webinars - CodeClan,/webinars/,2020-04-09,Thursday,/courses/data-analysis/,1,0
+Webinars - CodeClan,/webinars/,2020-04-09,Thursday,/courses/data-analysis/,1,1
 Webinars - CodeClan,/webinars/,2020-04-09,Thursday,/courses/data-analysis/info-pack/,1,1
 Webinars - CodeClan,/webinars/,2020-04-09,Thursday,/courses/professional-software-development/,1,1
 Webinars - CodeClan,/webinars/,2020-04-09,Thursday,/webinars/,5,0
-Webinars - CodeClan,/webinars/,2020-04-09,Thursday,/webinars/?elementor-preview=19875&ver=1586432823,1,0
+Webinars - CodeClan,/webinars/,2020-04-09,Thursday,/webinars/,1,0
 Webinars - CodeClan,/webinars/,2020-04-10,Friday,(entrance),4,4
 Webinars - CodeClan,/webinars/,2020-04-10,Friday,/,2,2
 Webinars - CodeClan,/webinars/,2020-04-10,Friday,/blog/,1,1
@@ -182,8 +182,8 @@ Webinars - CodeClan,/webinars/,2020-04-10,Friday,/blog/find-inspiration-kats-stu
 Webinars - CodeClan,/webinars/,2020-04-10,Friday,/courses/data-analysis/,1,1
 Webinars - CodeClan,/webinars/,2020-04-10,Friday,/events/,1,1
 Webinars - CodeClan,/webinars/,2020-04-10,Friday,/webinars/,1,0
-Webinars - CodeClan,/webinars/,2020-04-10,Friday,/webinars/?preview_id=19875&preview_nonce=295af978d6&preview=true,1,0
-Webinars - CodeClan,/webinars/,2020-04-10,Friday,/webinars/?preview_id=19875&preview_nonce=dda609d1fc&preview=true,1,0
+Webinars - CodeClan,/webinars/,2020-04-10,Friday,/webinars/,1,0
+Webinars - CodeClan,/webinars/,2020-04-10,Friday,/webinars/,1,0
 Webinars - CodeClan,/webinars/,2020-04-11,Saturday,(entrance),3,3
 Webinars - CodeClan,/webinars/,2020-04-11,Saturday,/,1,1
 Webinars - CodeClan,/webinars/,2020-04-12,Sunday,/,1,1
@@ -228,11 +228,11 @@ Webinars - CodeClan,/webinars/?fbclid=IwAR2h2oGSxo4ew1QYxMdZVttw6_-wO-pFBSYDUNrZ
 Webinars - CodeClan,/webinars/?fbclid=IwAR2h2oGSxo4ew1QYxMdZVttw6_-wO-pFBSYDUNrZPIJ8vlTJNHpz8m_dtrE,2020-04-13,Monday,/updates/newsletter-thank-you/,1,1
 Webinars - CodeClan,/webinars/?fbclid=IwAR2kf07Fi3y1C4MVIlAxakYlB3HJ90jmqgXk9pq3JPyoA21zNOwTNMF4KSM,2020-03-19,Thursday,(entrance),1,1
 Webinars - CodeClan,/webinars/?fbclid=IwAR2kf07Fi3y1C4MVIlAxakYlB3HJ90jmqgXk9pq3JPyoA21zNOwTNMF4KSM,2020-04-04,Saturday,(entrance),1,1
-Webinars - CodeClan,/webinars/?fbclid=IwAR2kf07Fi3y1C4MVIlAxakYlB3HJ90jmqgXk9pq3JPyoA21zNOwTNMF4KSM,2020-04-04,Saturday,/webinars/?fbclid=IwAR2kf07Fi3y1C4MVIlAxakYlB3HJ90jmqgXk9pq3JPyoA21zNOwTNMF4KSM,1,0
+Webinars - CodeClan,/webinars/?fbclid=IwAR2kf07Fi3y1C4MVIlAxakYlB3HJ90jmqgXk9pq3JPyoA21zNOwTNMF4KSM,2020-04-04,Saturday,/webinars/,1,0
 Webinars - CodeClan,/webinars/?fbclid=IwAR2Kp5S_h3fYqq1Raha_5Df2c59GWd0VYFmvVdRk0VC6xm8MXHoMu8PRhR4,2020-03-19,Thursday,(entrance),1,1
 Webinars - CodeClan,/webinars/?fbclid=IwAR2r8kbtO1UF0vnHKCseYbygeMJ8pXRS6CojbHlqvfugxYfVogu0hyw4CO4,2020-03-19,Thursday,(entrance),1,1
 Webinars - CodeClan,/webinars/?fbclid=IwAR32-YCc_YniV_rWqU5tVzXFlsRdCv44ifR6OM2eFq9LGYLiJ10Hr5uJxdg,2020-03-19,Thursday,(entrance),1,1
 Webinars - CodeClan,/webinars/?fbclid=IwAR3Y8F3G_PruHPZpkS804ypmxUbnDyHXQAC4jCKQoF-jl4b3AYUPjQw6dD4,2020-03-19,Thursday,(entrance),1,1
 Webinars - CodeClan,/webinars/?preview_id=19875&preview_nonce=295af978d6&preview=true,2020-04-10,Friday,/2020-new-managing-software-development-teams/,1,1
-Webinars - CodeClan,/webinars/?preview_id=19875&preview_nonce=55f2ba9986&preview=true,2020-04-03,Friday,/webinars/?elementor-preview=19875&ver=1585929109,1,1
-Webinars - CodeClan,/webinars/?preview_id=19875&preview_nonce=dda609d1fc&preview=true,2020-04-10,Friday,/webinars/?elementor-preview=19875&ver=1586516409,1,1
+Webinars - CodeClan,/webinars/?preview_id=19875&preview_nonce=55f2ba9986&preview=true,2020-04-03,Friday,/webinars/,1,1
+Webinars - CodeClan,/webinars/?preview_id=19875&preview_nonce=dda609d1fc&preview=true,2020-04-10,Friday,/webinars/,1,1

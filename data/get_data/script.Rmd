@@ -123,7 +123,7 @@ previouse_page <-  google_analytics(viewid,
                                 "ga:dayOfWeekName",
                                 "ga:previousPagePath"),
                 filters="ga:pagePath=~/webinars/" ) %>% clean_names() %>% 
-  separate(previous_page_path,into = c("url","after_?"),sep = "[?]") 
+  separate(previous_page_path,into = c("previous_page_url","after_"),sep = "[?]") %>% select(-after_)
 ```
 ```{r}
 write_csv(previouse_page,"../pulled_data/previouse_page.csv")
@@ -144,7 +144,7 @@ landing_page <-  google_analytics(viewid,
                                 "ga:dayOfWeekName",
                                 "ga:landingPagePath"),
                 filters="ga:pagePath=~/webinars/" ) %>% clean_names() %>% 
-  separate(landing_page_path,into = c("url","after_?"),sep = "[?]") 
+  separate(landing_page_path,into = c("landing_page_url","after_"),sep = "[?]") %>% select(-after_)
 
 #csv write
 write_csv(landing_page,"../pulled_data/landing_page.csv")
@@ -168,9 +168,8 @@ source_media <-  google_analytics(viewid,
                                 "ga:hasSocialSourceReferral"
                                 
                                 ),
-                filters="ga:pagePath=~/webinars/" ) %>% clean_names() 
+                filters="ga:pagePath=~/webinars/" ) %>% clean_names()
   
-
 # csv write up
 write_csv(source_media,"../pulled_data/source_media.csv")
 
@@ -185,7 +184,7 @@ all_pages_title <- google_analytics(viewid,
                  dimensions = c(
                                 "pagePath",
                                 "pageTitle")) %>% clean_names() %>% 
-    separate(page_path,into = c("url","after_?"),sep = "[?]") 
+    separate(page_path,into = c("page_url","after"),sep = "[?]") %>% select(-after) 
 
                                 
 write_csv(all_pages_title,"../pulled_data/all_pages_title.csv")
