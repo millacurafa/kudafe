@@ -30,7 +30,9 @@ landing_exit %>%
   aes(x = reorder(landingPagePath, sum), y = sum) +
   geom_col()+
   coord_flip() +
-  ggtitle("Number of landings per page")
+  ggtitle("Number of landings per page") +
+  xlab("page") +
+  ylab("number of landings")
 ```
 
 ```{r}
@@ -43,7 +45,9 @@ landing_exit %>%
   aes(x = reorder(exitPagePath, sum), y = sum) +
   geom_col()+
   coord_flip() +
-  ggtitle("Number of exits per page")
+  ggtitle("Number of exits per page") +
+  xlab("page") +
+  ylab("number of exits")
 ```
 ```{r}
 source_medium <- read_csv("/Users/admin/codeclan_work/week_08/kudafe/data/pulled_data/source_medium.csv")
@@ -59,7 +63,9 @@ source_medium %>%
   aes(x = reorder(sourceMedium, sum), y = sum) +
   geom_col()+
   coord_flip() +
-  ggtitle("Number of visits per source medium")
+  ggtitle("Number of visits per source medium") +
+  xlab("source medium") +
+  ylab("number of visits")
 ```
 
 ```{r}
@@ -74,6 +80,24 @@ social_channels %>%
   aes(x = reorder(socialNetwork, sum), y = sum) +
   geom_col()+
   coord_flip() +
-  ggtitle("Number of visits per source medium")
+  ggtitle("Number of visits per social channel") +
+  xlab("social channel") +
+  ylab("number of visits")
+```
+
+```{r}
+page_channels <- read_csv("/Users/admin/codeclan_work/week_08/kudafe/data/pulled_data/page_chanels.csv")
+```
+
+```{r}
+page_channels %>% 
+  arrange(desc(pageviews)) %>% 
+  ggplot() +
+  aes(x = reorder(channelGrouping, pageviews), y = pageviews) +
+  geom_col()+
+  coord_flip() +
+  ggtitle("Number of visits per channel") +
+  xlab("channel") +
+  ylab("number of visits")
 ```
 
