@@ -1,0 +1,79 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+options(googleAuthR.client_id = keyring::key_get(service = "ga_client_id", keyring = "googleanalytics"))
+options(googleAuthR.client_secret = keyring::key_get(service = "ga_client_secret", keyring = "googleanalytics"))
+
+devtools::reload(pkg = devtools::inst("googleAnalyticsR"))
+my_ga_id <- 102407343
+```
+
+
+```{r}
+library(googleAnalyticsR)
+library(tidyverse)
+```
+```{r}
+landing_exit <- read_csv("/Users/admin/codeclan_work/week_08/kudafe/data/pulled_data/landing_exit_page.csv")
+```
+
+```{r}
+landing_exit %>% 
+  group_by(landingPagePath) %>% 
+  summarise(sum = sum(pageviews)) %>% 
+  arrange(desc(sum)) %>% 
+  top_n(10) %>% 
+  ggplot() +
+  aes(x = reorder(landingPagePath, sum), y = sum) +
+  geom_col()+
+  coord_flip() +
+  ggtitle("Number of landings per page")
+```
+
+```{r}
+landing_exit %>% 
+  group_by(exitPagePath) %>% 
+  summarise(sum = sum(pageviews)) %>% 
+  arrange(desc(sum)) %>% 
+  top_n(5) %>% 
+  ggplot() +
+  aes(x = reorder(exitPagePath, sum), y = sum) +
+  geom_col()+
+  coord_flip() +
+  ggtitle("Number of exits per page")
+```
+```{r}
+source_medium <- read_csv("/Users/admin/codeclan_work/week_08/kudafe/data/pulled_data/source_medium.csv")
+```
+
+```{r}
+source_medium %>% 
+  group_by(sourceMedium) %>% 
+  summarise(sum = sum(pageviews)) %>% 
+  arrange(desc(sum)) %>% 
+  top_n(15) %>% 
+  ggplot() +
+  aes(x = reorder(sourceMedium, sum), y = sum) +
+  geom_col()+
+  coord_flip() +
+  ggtitle("Number of visits per source medium")
+```
+
+```{r}
+social_channels <- read_csv("/Users/admin/codeclan_work/week_08/kudafe/data/pulled_data/social_chanels.csv")
+```
+```{r}
+social_channels %>% 
+  group_by(socialNetwork) %>% 
+  summarise(sum = sum(pageviews)) %>% 
+  arrange(desc(sum)) %>% 
+  ggplot() +
+  aes(x = reorder(socialNetwork, sum), y = sum) +
+  geom_col()+
+  coord_flip() +
+  ggtitle("Number of visits per source medium")
+```
+
