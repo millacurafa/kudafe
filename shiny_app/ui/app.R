@@ -140,10 +140,15 @@ ui <- fluidPage(
            ), #Closes sidebar panel
            #Starts main panel
            mainPanel(
+             fluidRow(
+             # Output: General Source ncluding socials ----
+             plotOutput(outputId = "sourcePages")
+             ),
+             # Output: Social sources  ----
+             fluidRow(
+              plotOutput(outputId = "socialsPlot")
+             )
              
-             # Output: Histogram ----
-             plotOutput(outputId = "distPlot")
-           
             )
           
            ), #Closes second tab
@@ -153,8 +158,11 @@ ui <- fluidPage(
            fluidRow(
              titlePanel("Referrals"),
              #Starts a new column to hold symbols
-             column(4,"Source"),
+             # Output: Source Pages ----
+             column(4,plotOutput(outputId = "sourcePages")),
+             # Output: Previous Pages ----
              column(4, plotOutput(outputId = "previousPages")),
+             # Output: Final Pages ----
              column(4, "Final page")
            ) # Closes fluid row
   ), #Closes third tab
@@ -164,13 +172,16 @@ ui <- fluidPage(
            fluidRow(
              titlePanel("Referrals"),
              #Starts a new column to hold symbols
+             # Output: General Referrals ----
              column(4,plotOutput(outputId = "referrals")),
-             column(4, plotOutput(outputId = "pre_medium")),
+             # Output: Per Medium   ----
+             column(4, plotOutput(outputId = "per_medium")),
              column(4, "Final page")
            ), # Closes fluid row
            fluidRow(
              titlePanel("Referrals"),
              #Starts a new column to hold symbols
+             # Output: Random dummy data ----
              column(4,"Source"),
              column(4, "Previous page"),
              column(4, "Final page")
