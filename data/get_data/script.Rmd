@@ -178,16 +178,19 @@ write_csv(source_media,"../pulled_data/source_media.csv")
 
 ```{r} 
 # api call for all pages. Needed for mesures and to join tables to get titles of landing pages and other
-all_pages_title <- google_analytics(viewid, 
-                 date_range = c("2020-03-15",as.character(today())), 
-                 metrics = c("pageviews","ga:uniquePageviews"), 
-                 dimensions = c(
-                                "pagePath",
-                                "pageTitle")) %>% clean_names() %>% 
-    separate(page_path,into = c("page_url","after"),sep = "[?]") %>% select(-after) 
+all_pages_title <- google_analytics(
+  viewid,
+  date_range = c("2020-03-15", as.character(today())),
+  metrics = c("pageviews", "ga:uniquePageviews"),
+  dimensions = c("pagePath",
+                 "pageTitle")
+) %>% clean_names() %>%
+  separate(page_path,
+           into = c("page_url", "after"),
+           sep = "[?]") %>% select(-after)
 
-                                
-write_csv(all_pages_title,"../pulled_data/all_pages_title.csv")
+
+write_csv(all_pages_title, "../pulled_data/all_pages_title.csv")
                                
 ```
 
