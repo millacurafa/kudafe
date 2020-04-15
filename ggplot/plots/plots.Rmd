@@ -1,0 +1,230 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+options(googleAuthR.client_id = keyring::key_get(service = "ga_client_id", keyring = "googleanalytics"))
+options(googleAuthR.client_secret = keyring::key_get(service = "ga_client_secret", keyring = "googleanalytics"))
+
+devtools::reload(pkg = devtools::inst("googleAnalyticsR"))
+my_ga_id <- 102407343
+```
+
+
+```{r}
+library(googleAnalyticsR)
+library(tidyverse)
+library(tsibble)
+```
+```{r}
+landing_exit <- read_csv("/Users/admin/codeclan_work/week_08/kudafe/data/pulled_data/landing_exit_page.csv")
+```
+
+```{r}
+landing_exit %>% 
+  group_by(landingPagePath) %>% 
+  summarise(sum = sum(pageviews)) %>% 
+  arrange(desc(sum)) %>% 
+  top_n(10) %>% 
+  ggplot() +
+  aes(x = reorder(landingPagePath, sum), y = sum) +
+  geom_col()+
+  coord_flip() +
+  ggtitle("Number of landings per page") +
+  xlab("page") +
+  ylab("number of landings")
+```
+
+```{r}
+landing_exit %>% 
+  group_by(exitPagePath) %>% 
+  summarise(sum = sum(pageviews)) %>% 
+  arrange(desc(sum)) %>% 
+  top_n(5) %>% 
+  ggplot() +
+  aes(x = reorder(exitPagePath, sum), y = sum) +
+  geom_col()+
+  coord_flip() +
+  ggtitle("Number of exits per page") +
+  xlab("page") +
+  ylab("number of exits")
+```
+```{r}
+source_medium <- read_csv("/Users/admin/codeclan_work/week_08/kudafe/data/pulled_data/source_medium.csv")
+```
+
+```{r}
+source_medium %>% 
+  group_by(sourceMedium) %>% 
+  summarise(sum = sum(pageviews)) %>% 
+  arrange(desc(sum)) %>% 
+  top_n(15) %>% 
+  ggplot() +
+  aes(x = reorder(sourceMedium, sum), y = sum) +
+  geom_col()+
+  coord_flip() +
+  ggtitle("Number of visits per source medium") +
+  xlab("source medium") +
+  ylab("number of visits")
+```
+
+```{r}
+social_channels <- read_csv("/Users/admin/codeclan_work/week_08/kudafe/data/pulled_data/social_chanels.csv")
+```
+```{r}
+social_channels %>% 
+  group_by(socialNetwork) %>% 
+  summarise(sum = sum(pageviews)) %>% 
+  arrange(desc(sum)) %>% 
+  ggplot() +
+  aes(x = reorder(socialNetwork, sum), y = sum) +
+  geom_col()+
+  coord_flip() +
+  ggtitle("Number of visits per social channel") +
+  xlab("social channel") +
+  ylab("number of visits")
+```
+
+```{r}
+page_channels <- read_csv("/Users/admin/codeclan_work/week_08/kudafe/data/pulled_data/page_chanels.csv")
+```
+
+```{r}
+page_channels %>% 
+  arrange(desc(pageviews)) %>% 
+  ggplot() +
+  aes(x = reorder(channelGrouping, pageviews), y = pageviews) +
+  geom_col()+
+  coord_flip() +
+  ggtitle("Number of visits per channel") +
+  xlab("channel") +
+  ylab("number of visits")
+```
+
+```{r}
+all_pages_title <- read_csv("/Users/admin/codeclan_work/week_08/kudafe/data/pulled_data/all_pages_title.csv")
+```
+
+```{r}
+all_pages_title %>% 
+  group_by(pageTitle) %>% 
+  summarise(sum = sum(pageviews)) %>% 
+  arrange(desc(sum)) %>% 
+  top_n(10) %>% 
+  ggplot() +
+  aes(x = reorder(pageTitle, sum), y = sum) +
+  geom_col()+
+  coord_flip() +
+  ggtitle("Page views per page title") +
+  xlab("page title") +
+  ylab("number of page views")
+```
+```{r}
+all_pages_title %>% 
+  group_by(pageTitle) %>% 
+  summarise(sum = sum(uniquePageviews)) %>% 
+  arrange(desc(sum)) %>% 
+  top_n(10) %>% 
+  ggplot() +
+  aes(x = reorder(pageTitle, sum), y = sum) +
+  geom_col()+
+  coord_flip() +
+  ggtitle("Unique page views per page title") +
+  xlab("page title") +
+  ylab("number of unique page views")
+```
+
+
+```{r}
+landing_page <- read_csv("/Users/admin/codeclan_work/week_08/kudafe/data/pulled_data/landing_page.csv")
+```
+```{r}
+landing_page %>% 
+as_tsibble(index = date, key = landingPagePath)
+```
+
+```{r}
+landing_rolling <- landing_page %>% 
+  group_by_key() %>% 
+  mutate(temp_ma = slide_dbl(Temperature, ~ mean(., na.rm = TRUE), .size = 1000))
+
+# plot the data 
+ggplot(elec_rolling) + 
+  geom_line(aes(x = Date, y = Temperature), colour = "grey") + 
+    geom_line(aes(x = Date, y = temp_ma), colour = "red")
+```
+
+```{r}
+previous_page <- read_csv("/Users/admin/codeclan_work/week_08/kudafe/data/pulled_data/previouse_page.csv")
+```
+
+```{r}
+previous_page %>% 
+  group_by(previousPagePath) %>% 
+  summarise(sum = sum(pageviews)) %>% 
+  arrange(desc(sum)) %>% 
+  top_n(10) %>% 
+  ggplot() +
+  aes(x = reorder(previousPagePath, sum), y = sum) +
+  geom_col()+
+  coord_flip() +
+  ggtitle("Webinars page views per previous page path") +
+  xlab("previous page path") +
+  ylab("number of page views")
+```
+
+```{r}
+previous_page %>% 
+  group_by(previousPagePath) %>% 
+  summarise(sum = sum(uniquePageviews)) %>% 
+  arrange(desc(sum)) %>% 
+  top_n(10) %>% 
+  ggplot() +
+  aes(x = reorder(previousPagePath, sum), y = sum) +
+  geom_col()+
+  coord_flip() +
+  ggtitle("Webinars unique page views per previous page path") +
+  xlab("previous page path") +
+  ylab("number of unique page views")
+```
+
+```{r}
+landing_page %>% 
+  group_by(landingPagePath) %>% 
+  summarise(sum = sum(pageviews)) %>% 
+  arrange(desc(sum)) %>% 
+  top_n(10) %>% 
+  ggplot() +
+  aes(x = reorder(landingPagePath, sum), y = sum) +
+  geom_col()+
+  coord_flip() +
+  ggtitle("Webinars page views per landing page path") +
+  xlab("landing page path") +
+  ylab("number of page views")
+```
+
+
+```{r}
+landing_page %>% 
+  group_by(landingPagePath) %>% 
+  summarise(sum = sum(uniquePageviews)) %>% 
+  arrange(desc(sum)) %>% 
+  top_n(10) %>% 
+  ggplot() +
+  aes(x = reorder(landingPagePath, sum), y = sum) +
+  geom_col()+
+  coord_flip() +
+  ggtitle("Webinars unique page views per landing page path") +
+  xlab("landing page path") +
+  ylab("number of unique page views")
+```
+
+
+
+
+
+
+
+
+
