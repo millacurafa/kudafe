@@ -40,7 +40,7 @@ previouse_page <-  google_analytics(
   ) %>% select(-after_)
 
 #CSV file 
-write_csv(previouse_page,"")
+write_csv(previouse_page,"previouse_page.csv")
 # Second call landing page
 
 landing_page <-  google_analytics(
