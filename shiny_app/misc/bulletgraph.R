@@ -2,7 +2,7 @@
 # library(htmltools)
 # library(htmlwidgets)
 library(d3Dashboard)
-library(shiny)
+# library(shiny)
 
 ytd2005 <- list(
   title=list("Revenue", "Profit", "Order Size", "New Customers", "Satisfaction"),
