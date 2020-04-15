@@ -40,7 +40,7 @@ previouse_page <-  google_analytics(
   ) %>% select(-after_)
 
 #CSV file 
-write_csv(previouse_page,"./previouse_page.csv")
+write_csv(previouse_page,"")
 # Second call landing page
 
 landing_page <-  google_analytics(
@@ -61,7 +61,7 @@ landing_page <-  google_analytics(
            sep = "[?]") %>% select(-after_)
 
 # CSV 
-write_csv(landing_page,"./landing_page.csv")
+write_csv(landing_page,"landing_page.csv")
 # Third call exit page
 exit_page <-  google_analytics(
   viewid,
@@ -79,7 +79,7 @@ exit_page <-  google_analytics(
            into = c("exit_page_url", "after_"),
            sep = "[?]") %>% select(-after_)
 # CSV 
-write_csv(exit_page,"./exit_page.csv")
+write_csv(exit_page,"exit_page.csv")
 
 # Source media
 source_media <-  google_analytics(
@@ -117,5 +117,5 @@ all_pages <- google_analytics(
            into = c("page_url", "after"),
            sep = "[?]") %>% select(-after)
 
-write_csv(all_pages,"./all_pages.csv")
+write_csv(all_pages,"all_pages.csv")
 
