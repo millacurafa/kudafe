@@ -1,3 +1,4 @@
+library(ggplot2)
 # Define server logic required to draw a histogram ----
 server <- function(input, output) {
   
@@ -18,6 +19,23 @@ server <- function(input, output) {
          xlab = "Waiting time to next eruption (in mins)",
          main = "Histogram of waiting times")
     
+    
+    
   })
+  
+  # You can access the values of the widget (as a vector of Dates)
+  # with input$dates, e.g.
+  output$value <- renderPrint({ input$dates })
+  
+  #renders plot for second tab
+  # output$dotPlot <- renderPlot({
+  #   
+  #   x    <- faithful$waiting
+  #   bins <- seq(min(x), max(x), length.out = input$bins + 1)
+  #   
+  #   geom_line(x, breaks = bins, col = "#75AADB", border = "white",
+  #        xlab = "Waiting time to next eruption (in mins)",
+  #        main = "Histogram of waiting times")
+  # })
   
 }
