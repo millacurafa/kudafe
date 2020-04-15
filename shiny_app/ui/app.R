@@ -1,6 +1,6 @@
 library(shiny)
 library(shinythemes)
-# library(d3Dashboard)
+library(d3Dashboard)
 library(tidyverse)
 
 
@@ -59,71 +59,74 @@ ui <- fluidPage(
                                 selected = 1),
              hr(),
              
-             #Starts fluidRow 
+             #Starts fluidRow for the sidebar panel
              fluidRow(
+               titlePanel("Referrals"),
               #Starts a new column to hold symbols
              column(6,
              #Starts a new row
              fluidRow(
-               icon("google", lib = "font-awesome"),
+               icon("google", lib = "font-awesome"), "Google"
                ),
                fluidRow(
                icon("envelope-open-text", lib = "font-awesome"),
-               #Adds ggplot graph
-               ggplot()+
-                geom_col(
-                 aes(
-                 x = 1,
-                 y = 400,
-                 ), 
-                 fill = "black",
-                 width = .15
-               ) +
-                coord_flip()+
-                 theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-                         panel.background = element_rect(), axis.line = element_blank(),
-                       axis.title.x=element_blank(), axis.text.x=element_blank(), axis.ticks.x=element_blank(),
-                       axis.title.y=element_blank(), axis.text.y=element_blank(), axis.ticks.y=element_blank()
-                       )+xlim(0.75, 1.25)+
-                 ylim(0, 1000)
+               "Email"
+               # #Adds ggplot graph
+               # ggplot()+
+               #  geom_col(
+               #   aes(
+               #   x = 1,
+               #   y = 400,
+               #   ), 
+               #   fill = "black",
+               #   width = .15
+               # ) +
+               #  coord_flip()+
+               #   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+               #           panel.background = element_rect(), axis.line = element_blank(),
+               #         axis.title.x=element_blank(), axis.text.x=element_blank(), axis.ticks.x=element_blank(),
+               #         axis.title.y=element_blank(), axis.text.y=element_blank(), axis.ticks.y=element_blank()
+               #         )+xlim(0.75, 1.25)+
+               #   ylim(0, 1000)
                
                  ),
                fluidRow(
-               icon("facebook-f", lib = "font-awesome"),
+               icon("facebook-f", lib = "font-awesome"), "Facebook"
                ),
                fluidRow(
-               icon("twitter", lib = "font-awesome"),
+               icon("twitter", lib = "font-awesome"), "Twitter"
                ),
                fluidRow(
-               icon("instagram", lib = "font-awesome"),
+               icon("instagram", lib = "font-awesome"), "Instagram"
                ),
                fluidRow(
-               icon("linkedin-in", lib = "font-awesome"),
+               icon("linkedin-in", lib = "font-awesome"), "LinkedIn"
                ),
                fluidRow(
-               icon("reddit", lib = "font-awesome")
+               icon("reddit", lib = "font-awesome"), "Reddit"
                ),
              ), #Closes column
              #Starts second column to hold bulletgraph
-             column(6, "trial text"
-             #        ytd2005 <- list(
-             #          title=list("Revenue", "Profit", "Order Size", "New Customers", "Satisfaction"),
-             #          subtitle=list("US$, in thousands", "%", "US$, average", "count", "out of 5"),
-             #          range=list(c(150, 225, 300),
-             #                     c(20, 25, 30),
-             #                     c(350, 500, 600),
-             #                     c(1400, 2000, 2500),
-             #                     c(3.5, 4.25, 5)),
-             #          measures=list(c(220, 270),
-             #                        c(21, 23),
-             #                        c(100, 320),
-             #                        c(1000, 1650),
-             #                        c(3.2, 4.7)),
-             #          markers=list(250, 26, 550, 2100, 4.2)
-             #        ),
-             #        # Plot
-             #        bulletGraph(ytd2005)
-                    
+              column(6, 
+                     "trial text",
+                    # ytd2005 <- list(
+                    #   title=list("Revenue", "Profit", "Order Size", "New Customers", "Satisfaction"),
+                    #   subtitle=list("US$, in thousands", "%", "US$, average", "count", "out of 5"),
+                    #   range=list(c(150, 225, 300),
+                    #              c(20, 25, 30),
+                    #              c(350, 500, 600),
+                    #              c(1400, 2000, 2500),
+                    #              c(3.5, 4.25, 5)),
+                    #   measures=list(c(220, 270),
+                    #                 c(21, 23),
+                    #                 c(100, 320),
+                    #                 c(1000, 1650),
+                    #                 c(3.2, 4.7)),
+                    #   markers=list(250, 26, 550, 2100, 4.2)
+                    # )
+                    # # Plot
+                    # bulletGraph(ytd2005)
+                    # 
                     ) #Closes second column holding bulletgraph
              
              ) #Closes fluid row for icons and bullet graph
@@ -136,7 +139,7 @@ ui <- fluidPage(
            #   plotOutput(outputId = "dotPlot")
            #
            # ), # ---- Closes Histogram ----
-
+"Trial text"
            #Closes main panel
             )
            #Closes second tab
