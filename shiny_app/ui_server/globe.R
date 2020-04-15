@@ -68,7 +68,23 @@ landing_page <-  google_analytics(
            into = c("landing_page_url", "after_"),
            sep = "[?]") %>% select(-after_)
 
+# Exit page call
 
+exit_page <-  google_analytics(
+  viewid,
+  date_range = c("2020-03-15", as.character(today())),
+  metrics = c("ga:exits", "ga:exitRate"),
+  dimensions = c(
+    "ga:exitPagePath",
+    "pagePath",
+    "ga:date",
+    "ga:dayOfWeekName"
+  ),
+  filters = "ga:pagePath=~/webinars/"
+) %>% clean_names() %>%
+  separate(exit_page_path,
+           into = c("exit_page_url", "after_"),
+           sep = "[?]") %>% select(-after_)
 # Third call  social
 
 source_media <-  google_analytics(
@@ -103,3 +119,9 @@ all_pages <- google_analytics(
   separate(page_path,
            into = c("page_url", "after"),
            sep = "[?]") %>% select(-after)
+
+
+
+
+
+
