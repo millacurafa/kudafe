@@ -114,7 +114,9 @@ all_pages <- google_analytics(
   date_range = c("2020-03-15", as.character(today())),
   metrics = c("pageviews", "ga:uniquePageviews"),
   dimensions = c("pagePath",
-                 "pageTitle")
+                 "pageTitle",
+                 "ga:date"),
+  max = -1
 ) %>% clean_names() %>%
   separate(page_path,
            into = c("page_url", "after"),
