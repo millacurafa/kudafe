@@ -3,8 +3,6 @@ library(shinythemes)
 library(d3Dashboard)
 library(tidyverse)
 
-
-
 source("../ui_server/app_server.R")
 # Define UI for app that draws a histogram ----
 ui <- fluidPage(
@@ -17,7 +15,7 @@ ui <- fluidPage(
   #Here we start working with the first tabs by generating a TAB holder/panel
   tabsetPanel(
     # ---- First tab to be created ----
-    tabPanel("Random Sample Plot",
+    tabPanel("Website overview",
   
   # ---- Sidebar layout with input and output definitions ----
   sidebarLayout(
@@ -51,7 +49,7 @@ ui <- fluidPage(
     #Closes first tab
     ),
   # ---- Second tab to be created ----
-  tabPanel("Sources Plot",
+  tabPanel("Sources of trafic",
            sidebarPanel(
              # Copy the chunk below to make a group of checkboxes
              checkboxGroupInput("checkGroup", label = h3("Checkbox group"), 
@@ -146,11 +144,11 @@ ui <- fluidPage(
            ),
   
   # ---- Third tab to be created ----
-  tabPanel("Random General Plot",
+  tabPanel("User journey",
            #Closes third tab
   ),
   # ---- Fourth tab to be created ----
-  tabPanel("Random Information",
+  tabPanel("Miscellaneous",
            #Closes fourth tab
   )
     #Closes tabset panel
