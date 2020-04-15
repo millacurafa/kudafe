@@ -12,46 +12,49 @@ server <- function(input, output) {
   #    re-executed when inputs (input$bins) change
   # 2. Its output type is a plot
 
-    
-    output$dotPlot <- renderPlot({
-      ggplot(data=data.frame(dose=c("D0.5", "D1", "D2"),
-                             len=c(4.2, 10, 29.5)), 
-             aes(x=dose, y=len, group=1)) +
-        geom_line()+
-        geom_point()
-    })
+    ####EMPTY PLOT, CHANGE IT!
+    # output$dotPlot <- renderPlot({
+    #   
+    # })
   # You can access the values of the widget (as a vector of Dates)
   # with input$dates, e.g.
   output$value <- renderPrint({ input$dates })
   
   #renders plot for second tab
-  # output$dotPlot <- renderPlot({
-  #   
-  #   x    <- faithful$waiting
-  #   bins <- seq(min(x), max(x), length.out = input$bins + 1)
-  #   
-  #   geom_line(x, breaks = bins, col = "#75AADB", border = "white",
-  #        xlab = "Waiting time to next eruption (in mins)",
-  #        main = "Histogram of waiting times")
-  # })
+  output$dotPlot <- renderPlot({
 
-  output$distPlot <- renderPlot({
-    
     x    <- faithful$waiting
     bins <- seq(min(x), max(x), length.out = input$bins + 1)
-    
-    hist(x, breaks = bins, col = "#75AADB", border = "white",
+
+    geom_line(x, breaks = bins, col = "#75AADB", border = "white",
          xlab = "Waiting time to next eruption (in mins)",
-         main = "Histogram of waiting times") +
-      coord_flip()
-    
+         main = "Histogram of waiting times")
   })
+
+
   
-  output$socialsPlot <- renderPlot({
-    
-  })
+  # Socials 
+  # 
+  # output$socialsPlot <- renderPlot({
+  #   
+  # })
   
   output$sourcePages <- renderPlot({
+    source_media %>% 
+      group_by(source) %>% 
+      summarise(sum = sum(pageviews)) %>% 
+      arrange(desc(sum)) %>% 
+      top_n(15) %>% 
+      ggplot() +
+      aes(x = reorder(source, sum), y = sum) +
+      geom_col()+
+      coord_flip() +
+      ggtitle("Number of webinars page views per source") +
+      xlab("source") +
+      ylab("number of webinars page views")
+    
+  })
+  output$sourcePages1 <- renderPlot({
     source_media %>% 
       group_by(source) %>% 
       summarise(sum = sum(pageviews)) %>% 
@@ -81,9 +84,11 @@ server <- function(input, output) {
       ylab("number of webinars page views")
   })
   
-  output$finalPage <- renderPlot({
-    
-  })
+  ##I need to add the final graph
+  
+  # output$finalPage <- renderPlot({
+  #   
+  # })
   
   output$referrals <- renderPlot({
     source_media %>% 

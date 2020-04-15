@@ -1,7 +1,7 @@
 library(shiny)
 library(shinythemes)
 library(d3Dashboard)
-library(tidyverse)
+# library(tidyverse)
 
 source("../ui_server/app_server.R")
 # Define UI for app that draws a histogram ----
@@ -19,11 +19,8 @@ ui <- fluidPage(
   
   # ---- Sidebar layout with input and output definitions ----
   sidebarLayout(
-    
-    # ---- Sidebar panel for inputs ----
+    # ---- Sidebar panel for inputs -1---
     sidebarPanel(
-      
-      
       # Create range selector
       dateRangeInput("dates", label = h3("Date range")),
       hr(),
@@ -34,27 +31,21 @@ ui <- fluidPage(
                          choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3),
                          selected = 1),
       hr(),
-      
-      
     ),
     
     # ---- Ends Sidebar panel for inputs ----
     # ---- Main panel for displaying outputs ----
     mainPanel(
-      #
-      #    Output: ----Histogram ----
-      #   plotOutput(outputId = "dotPlot")
-      #
-      # ), # ---- Closes Histogram ----
-      plotOutput(outputId = "dotPlot")
-      #Closes main panel
-     
+         # Output: ----dotPlot ----
+        plotOutput(outputId = "dotPlot")
+        # ---- Ends Main panel for displaying outputs ----
       
-        )
-    # ---- Ends Main panel for displaying outputs ----
+        ) 
+    # ---- Closes Sidebar layout with input and output definitions ----
+ 
       )
-    #Closes first tab
-    ),
+   
+    ), #Closes first tab
   # ---- Second tab to be created ----
   tabPanel("Sources of trafic",
            sidebarPanel(
@@ -142,11 +133,11 @@ ui <- fluidPage(
            mainPanel(
              fluidRow(
              # Output: General Source ncluding socials ----
-             plotOutput(outputId = "sourcePages")
+             plotOutput(outputId = "sourcePages1")
              ),
              # Output: Social sources  ----
              fluidRow(
-              plotOutput(outputId = "socialsPlot")
+              # plotOutput(outputId = "socialsPlot")
              )
              
             )
@@ -173,7 +164,7 @@ ui <- fluidPage(
              titlePanel("Referrals"),
              #Starts a new column to hold symbols
              # Output: General Referrals ----
-             column(4,plotOutput(outputId = "referrals")),
+             column(4, plotOutput(outputId = "referrals")),
              # Output: Per Medium   ----
              column(4, plotOutput(outputId = "per_medium")),
              column(4, "Final page")
