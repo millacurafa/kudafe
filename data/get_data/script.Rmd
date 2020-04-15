@@ -1,0 +1,231 @@
+```{r}
+library(googleAnalyticsR)
+library(keyring)
+library(tidyverse)
+library(lubridate)
+library(janitor)
+```
+
+```{r}
+
+options(googleAuthR.client_id = keyring::key_get(service = "ga_client_id", keyring = "googleanalytics"))
+
+options(googleAuthR.client_secret = keyring::key_get(service = "ga_client_secret", keyring = "googleanalytics"))
+
+devtools::reload(pkg = devtools::inst("googleAnalyticsR"))
+
+#Authenticate your account
+ga_auth()
+
+#Get a list of accounts you have access to
+account_list <- ga_account_list()
+
+#ViewID is the way to access the account you want
+viewid<- account_list$viewId[1]
+
+```
+```{r}
+# API calls 
+
+cc_page_overview <- google_analytics(viewid, 
+                 date_range = c("2020-03-15", as.character(today()) ), 
+                 metrics = c("pageviews","uniquePageviews","timeOnPage"), 
+                 dimensions = c("pagePath",
+                                "pageTitle",
+                                "landingPagePath",
+                                
+                                "exitPagePath",
+                                "pageDepth"), max = -1)
+```
+```{r}
+# Saving to csv file 
+write_csv(cc_page_overview,"../pulled_data/cc_page_overview.csv")
+```
+
+
+
+```{r}
+page_chanels <- google_analytics(viewid, 
+                 date_range = c("2020-03-15", as.character(today())) , 
+                 metrics = "pageviews", 
+                 dimensions = c("channelGrouping"),
+                  filters="ga:pagePath=~/webinars/") %>% clean_names()
+```
+```{r}
+write_csv(page_chanels,"../pulled_data/page_chanels.csv")
+
+```
+
+
+```{r}
+device_category <-  google_analytics(viewid, 
+                 date_range = c("2020-03-15",as.character(today()) ), 
+                 metrics = "pageviews", 
+                 dimensions = c("deviceCategory"),
+                  filters="ga:pagePath=~/webinars/") %>% 
+  clean_names()
+write_csv(device_category,"../pulled_data/device_category.csv")
+
+```
+
+```{r}
+source_medium <-  google_analytics(viewid, 
+                 date_range = c("2020-03-15", as.character(today()) ), 
+                 metrics = "pageviews", 
+                 dimensions = c("ga:medium","ga:sourceMedium"),
+                  filters="ga:pagePath=~/webinars/") %>% clean_names()
+```
+```{r}
+write_csv(source_medium,"../pulled_data/source_medium.csv")
+
+```
+
+
+
+
+
+
+```{r}
+social_chanels <-  google_analytics(viewid, 
+                 date_range = c("2020-03-15",as.character(today()) ),
+                 metrics = "pageviews", 
+                 dimensions = c("ga:socialNetwork"),
+                  filters="ga:pagePath=~/webinars/") %>% clean_names()
+```
+```{r}
+write_csv(social_chanels,"../pulled_data/social_chanels.csv")
+
+```
+
+```{r}
+age_brackets <-  google_analytics(viewid, 
+                 date_range = c("2020-03-15",as.character(today()) ), 
+                 metrics = "pageviews", 
+                 dimensions = c("ga:userAgeBracket"),
+                  filters="ga:pagePath=~/webinars/") %>% clean_names()
+```
+```{r}
+write_csv(age_brackets,"../pulled_data/age_brackets.csv")
+
+```
+
+
+
+14 April
+```{r}
+#previouse page 
+previouse_page <-  google_analytics(viewid, 
+                 date_range = c("2020-03-15",as.character(today())), 
+                 metrics = c("pageviews","uniquePageviews"), 
+                 dimensions = c("ga:pageTitle",
+                                "pagePath",
+                                "ga:date",
+                                "ga:dayOfWeekName",
+                                "ga:previousPagePath"),
+                filters="ga:pagePath=~/webinars/" ) %>% clean_names() %>% 
+  separate(previous_page_path,into = c("previous_page_url","after_"),sep = "[?]") %>% select(-after_)
+```
+```{r}
+write_csv(previouse_page,"../pulled_data/previouse_page.csv")
+
+```
+
+
+
+
+```{r}
+#landing page
+landing_page <-  google_analytics(viewid, 
+                 date_range = c("2020-03-15",as.character(today())), 
+                 metrics = c("pageviews","uniquePageviews"), 
+                 dimensions = c("ga:pageTitle",
+                                "pagePath",
+                                "ga:date",
+                                "ga:dayOfWeekName",
+                                "ga:landingPagePath"),
+                filters="ga:pagePath=~/webinars/" ) %>% clean_names() %>% 
+  separate(landing_page_path,into = c("landing_page_url","after_"),sep = "[?]") %>% select(-after_)
+
+#csv write
+write_csv(landing_page,"../pulled_data/landing_page.csv")
+#write_csv(landing_page,"pulled_data")
+
+```
+
+```{r}
+# source media api call
+source_media <-  google_analytics(viewid, 
+                 date_range = c("2020-03-15",as.character(today())), 
+                 metrics = c("pageviews","uniquePageviews"), 
+                 dimensions = c(
+                                "pagePath",
+                                "ga:date",
+                                "ga:dayOfWeekName",
+                                "ga:sourceMedium",
+                                "ga:source",
+                                "ga:medium",
+                                "ga:socialNetwork",
+                                "ga:hasSocialSourceReferral"
+                                
+                                ),
+                filters="ga:pagePath=~/webinars/" ) %>% clean_names()
+  
+# csv write up
+write_csv(source_media,"../pulled_data/source_media.csv")
+
+```
+
+
+```{r} 
+# api call for all pages. Needed for mesures and to join tables to get titles of landing pages and other
+all_pages_title <- google_analytics(
+  viewid,
+  date_range = c("2020-03-15", as.character(today())),
+  metrics = c("pageviews", "ga:uniquePageviews"),
+  dimensions = c("pagePath",
+                 "pageTitle")
+) %>% clean_names() %>%
+  separate(page_path,
+           into = c("page_url", "after"),
+           sep = "[?]") %>% select(-after)
+
+
+write_csv(all_pages_title, "../pulled_data/all_pages_title.csv")
+                               
+```
+
+
+
+
+```{r}
+
+```
+
+
+
+
+```{r}
+# chunk of code where we pulling and joining data to get title pages for landing and exit pages
+# cleaning of the landing page path is needed mayby str_split will do :)
+landing_page <-  google_analytics(102407343, 
+                                  date_range = c("2019-03-18","2020-03-18"), 
+                                  metrics = "pageviews", 
+                                  dimensions = c("ga:pageTitle",
+                                                 "pagePath",
+                                                 "ga:date",
+                                                 "ga:dayOfWeekName",
+                                                 "ga:landingPagePath"),
+                                  filters="ga:pagePath=~/webinars/" )
+all_pages <-  google_analytics(102407343, 
+                                  date_range = c("2020-03-18","2020-03-18"), 
+                                  metrics = "pageviews", 
+                                  dimensions = c("ga:pageTitle",
+                                                 "ga:pagePath"), max = -1) %>% 
+                select(-pageviews) 
+test_join <- landing_page %>%
+  left_join(all_pages, by = c("landingPagePath" = "pagePath"))
+```
+
+
+
+
