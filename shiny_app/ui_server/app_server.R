@@ -1,4 +1,4 @@
-library(ggplot2)
+source("../ui_server/global.R")
 # Define server logic required to draw a histogram ----
 server <- function(input, output) {
   

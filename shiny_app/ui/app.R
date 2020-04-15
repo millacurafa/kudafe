@@ -1,10 +1,12 @@
 library(shiny)
 library(shinythemes)
-library(d3Dashboard)
-library(tidyverse)
-
-
-
+library(d3Dashboard) #used for the bulletgraph
+#Loads app_server including the following libraries:
+# library(googleAnalyticsR)
+# library(keyring)
+# library(tidyverse)
+# library(lubridate)
+# library(janitor)
 source("../ui_server/app_server.R")
 # Define UI for app that draws a histogram ----
 ui <- fluidPage(

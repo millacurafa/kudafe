@@ -1,3 +1,5 @@
+source("../ui_server/global.R")
+
 head(previouse_page)
 
 # Number of webinars page views per previous page---------------------------------------------
