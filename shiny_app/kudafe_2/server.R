@@ -39,9 +39,10 @@ server <- function(input, output) {
       filter(input$daterange2[1] < date & date < input$daterange2[2])
   })
   output$source <- renderPlot({
+    var2 = sym(input$variable2)
     filtered_source() %>% 
       group_by(source) %>% 
-      summarise(sum = sum(pageviews)) %>% 
+      summarise(sum = sum(!!var2)) %>% 
       arrange(desc(sum)) %>% 
       top_n(15) %>% 
       ggplot() +
@@ -53,9 +54,11 @@ server <- function(input, output) {
       ylab("number of webinars page views")
     })
   output$social_network <- renderPlot({
+    var = sym(input$variable2)
+    
     filtered_source() %>% 
       group_by(social_network) %>% 
-      summarise(sum = sum(pageviews)) %>% 
+      summarise(sum = sum(!!var)) %>% 
       arrange(desc(sum)) %>% 
       top_n(15) %>% 
       ggplot() +
@@ -80,9 +83,11 @@ server <- function(input, output) {
   }
   
   output$landing <- renderPlot({
+    
+    var = sym(input$variable3)
     filerting(landing_page) %>% 
       group_by(landing_page_url) %>% 
-      summarise(sum = sum(pageviews)) %>% 
+      summarise(sum = sum(!!var)) %>% 
       arrange(desc(sum)) %>% 
       top_n(10) %>% 
       ggplot() +
@@ -95,9 +100,10 @@ server <- function(input, output) {
   })
   
   output$previouse <- renderPlot({
+    var = sym(input$variable3)
     filerting(previouse_page) %>% 
       group_by(previous_page_url) %>% 
-      summarise(sum = sum(pageviews)) %>% 
+      summarise(sum = sum(!!var)) %>% 
       arrange(desc(sum)) %>% 
       top_n(10) %>% 
       ggplot() +
@@ -130,12 +136,12 @@ server <- function(input, output) {
   
   #FOURTH TAB
   output$plot_4_1 <- renderPlot({
-    
+    var  = sym(input$variable4)
     source_media %>% 
       filter(input$daterange4[1] <= date & date < input$daterange4[2] ) %>% 
       
       group_by(has_social_source_referral) %>% 
-      summarise(sum = sum(pageviews)) %>% 
+      summarise(sum = sum(!!var)) %>% 
       arrange(desc(sum)) %>% 
       top_n(15) %>% 
       ggplot() +
@@ -153,6 +159,8 @@ server <- function(input, output) {
   
 
 output$plot_4_2 <- renderPlot({
+  #var  = sym(input$variable4)
+  
   exit_page %>% 
     filter(input$daterange4[1] <= date & date < input$daterange4[2] ) %>% 
     
