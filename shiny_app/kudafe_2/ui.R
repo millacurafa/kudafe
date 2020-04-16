@@ -142,6 +142,10 @@ ui <- fluidPage(
                                 min = min(all_pages$date),
                                 max =max(all_pages$date)
                                 ),
+                 selectInput("variable4", "What to plot?",
+                             choices = c("pageviews",
+                                         "unique_pageviews"
+                             ),
                  fluidRow(
                       column(6,
                              "Plot1",
@@ -159,5 +163,6 @@ ui <- fluidPage(
     #Closes tabset panel
   )
   #Closes fluidPage
+)
 )
 
