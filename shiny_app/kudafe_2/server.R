@@ -45,15 +45,57 @@ server <- function(input, output) {
               group_by(source) %>% 
               summarise(sum = sum(!!var2))
     
-    facebook_m_num <- sources %>% 
-      filter(source == "m.facebook.com") %>% 
-      pull(sum)
+   
     
   })
   
   output$facebook <- renderText({
-    sources_social_networks()
-    
+     sources_social_networks() %>% 
+      filter(source == "m.facebook.com" | source == "lm.facebook.com" | source == "l.facebook.com" | source == "facebook.com") %>% 
+       summarise(sum(sum))%>% 
+       pull()
+  })
+  
+  output$instagram <- renderText({
+    sources_social_networks() %>% 
+      filter(source == "m.instagram.com" | source == "lm.instagram.com" | source == "l.instagram.com" | source == "instagram.com") %>% 
+      summarise(sum(sum))%>% 
+      pull()
+  })
+  
+  output$twitter <- renderText({
+    sources_social_networks() %>% 
+      filter(source == "t.co" | source == "twitter.com") %>% 
+      summarise(sum(sum))%>% 
+      pull()
+  })
+  
+  output$google <- renderText({
+    sources_social_networks() %>% 
+      filter(source == "google.com" | source == "google") %>% 
+      summarise(sum(sum))%>% 
+      pull()
+  })
+  
+  output$linkedin <- renderText({
+    sources_social_networks() %>% 
+      filter(source == "linkedin.com" | source == "linkedin") %>% 
+      summarise(sum(sum))%>% 
+      pull()
+  })
+  
+  output$email <- renderText({
+    sources_social_networks() %>% 
+      filter(source == "CodeClan Employer Partners 2018" | source == "Website Subscribers" | source == "CodeClan Staff newsletter" | source == "Alumni Dec 2019") %>% 
+      summarise(sum(sum))%>% 
+      pull()
+  })
+  
+  output$reddit <- renderText({
+    sources_social_networks() %>% 
+      filter(source == "reddit.com") %>% 
+      summarise(sum(sum))%>% 
+      pull()
   })
   
   output$source <- renderPlot({
@@ -67,7 +109,7 @@ server <- function(input, output) {
       aes(x = reorder(source, sum), y = sum, fill = source) +
       geom_col()+
       coord_flip() +
-      ggtitle("Number of webinars page views per source") +
+      # ggtitle("Number of webinars page views per source") +
       xlab("source") +
       ylab("number of webinars page views")
     })
@@ -83,7 +125,7 @@ server <- function(input, output) {
       aes(x = reorder(social_network, sum), y = sum, fill = social_network) +
       geom_col()+
       coord_flip() +
-      ggtitle("Number of webinars page views per social network") +
+      # ggtitle("Number of webinars page views per social network") +
       xlab("social network") +
       ylab("number of webinars page views")
   })
@@ -112,7 +154,7 @@ server <- function(input, output) {
       aes(x = reorder(landing_page_url, sum), y = sum, fill = landing_page_url) +
       geom_col(show.legend = FALSE)+
       coord_flip() +
-      ggtitle("Number of webinars page views per landing page") +
+      # ggtitle("Number of webinars page views per landing page") +
       xlab("landing page") +
       ylab("number of webinars page views")+
       ylim(0, 300)+
@@ -163,7 +205,7 @@ server <- function(input, output) {
       aes(x = reorder(previous_page_url, sum), y = sum, fill = previous_page_url) +
       geom_col(show.legend = FALSE)+
       coord_flip() +
-      ggtitle("Number of webinars page views per previous page") +
+      # ggtitle("Number of webinars page views per previous page") +
       xlab("previous page") +
       ylab("number of webinars page views")+
       ylim(0, 300)+
@@ -188,7 +230,7 @@ server <- function(input, output) {
       aes(x = left_from_webinars, y = number_rows, fill = left_from_webinars) +
       geom_col()+
       coord_flip() +
-      ggtitle("Number of people who left the CodeClan web, depending on whether or not they left from webinars") +
+      # ggtitle("Number of people who left the CodeClan web, depending on whether or not they left from webinars") +
       xlab("left from webinars") +
       ylab("number of people who left the CodeClan web") +
       theme(legend.position = "top")
@@ -211,7 +253,7 @@ server <- function(input, output) {
       aes(x = reorder(has_social_source_referral, sum), y = sum, fill = has_social_source_referral) +
       geom_col()+
       coord_flip() +
-      ggtitle("Number of webinars page views depending on whether they come from a social source referral") +
+      # ggtitle("Number of webinars page views depending on whether they come from a social source referral") +
       xlab("social source referral") +
       ylab("number of webinars page views")
   })
@@ -233,7 +275,7 @@ output$plot_4_2 <- renderPlot({
     aes(x = left_from_webinars, y = number_rows, fill = left_from_webinars) +
     geom_col()+
     coord_flip() +
-    ggtitle("Number of people who left the CodeClan web, depending on whether or not they left from webinars") +
+    # ggtitle("Number of people who left the CodeClan web, depending on whether or not they left from webinars") +
     xlab("left from webinars") +
     ylab("number of people who left the CodeClan web")
   

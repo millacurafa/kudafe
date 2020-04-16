@@ -118,14 +118,14 @@ ui <- fluidPage(
                fluidRow(
                  #Starts a new column to hold symbols
                  column(6,
-                        "PLOT1",
+                        "Number of webinars page views per source",
                         plotOutput("source")
                         #Starts a new row
                         
                  ), #Closes column
                  #Starts second column to hold bulletgraph
                  column(6, 
-                        "PLOT2",
+                        "Number of webinars page views per social network",
                         plotOutput("social_network")
                         
                  ) #Closes second column holding bulletgraph
@@ -173,16 +173,16 @@ ui <- fluidPage(
                
                fluidRow(
                  column(4,
-                        "PLOT1",
+                        "Number of webinars page views per landing page",
                         plotOutput("landing")
                         ),
                  column(4,
-                        "PLOT2",
+                        "Number of webinars page views per previous page",
                         plotOutput("previouse")
                         
                         ),
                  column(4,
-                        "Plot3",
+                        "Number of people who left the CodeClan web, depending on whether or not they left from webinars",
                         plotOutput("exit")
                         ),
                  
@@ -219,11 +219,11 @@ ui <- fluidPage(
 
                  fluidRow(
                       column(6,
-                             "Plot1",
+                             "Number of webinars page views depending on whether they come from a social source referral",
                              plotOutput("plot_4_1")
                              ),
                       column(6,
-                             "Plot2",
+                             "Number of people who left the CodeClan web, depending on whether or not they left from webinars",
                              plotOutput("plot_4_2")
                              )
                  )
