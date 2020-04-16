@@ -4,6 +4,41 @@ library(tidyverse)
 library(lubridate)
 library(janitor)
 
+#Google analytics authentication
+
+
+#Authenticate your account
+# ga_auth()
+
+#Get a list of accounts you have access to
+# account_list <- ga_account_list()
+# 
+# #ViewID is the way to access the account you want
+# account_list$viewId
+# 
+# #Select the one you want to work with
+# my_ga_id <- 63038649
+# 
+# #Call the API to access the data you require
+# google_analytics(my_ga_id, 
+#                  date_range = c("2019-01-01", "2019-03-01"), 
+#                  metrics = "sessions", 
+#                  dimensions = "date")
+# # Set the authentication fo GA
+# 
+# options(
+#   googleAuthR.client_id = keyring::key_get(service = "ga_client_id", keyring = "googleanalytics")
+# )
+# 
+# options(
+#   googleAuthR.client_secret = keyring::key_get(service = "ga_client_secret", keyring = "googleanalytics")
+# )
+# 
+# devtools::reload(pkg = devtools::inst("googleAnalyticsR"))
+
+#Authenticate your account
+# ga_auth()
+
 # Set the authentication fo GA
 
 options(
@@ -18,6 +53,7 @@ devtools::reload(pkg = devtools::inst("googleAnalyticsR"))
 
 #Authenticate your account
 ga_auth()
+
 
 #Get a list of accounts you have access to
 account_list <- ga_account_list()
@@ -114,7 +150,11 @@ all_pages <- google_analytics(
   date_range = c("2020-03-15", as.character(today())),
   metrics = c("pageviews", "ga:uniquePageviews"),
   dimensions = c("pagePath",
-                 "pageTitle")
+
+                 "pageTitle",
+                 "ga:date"),
+  max = -1
+
 ) %>% clean_names() %>%
   separate(page_path,
            into = c("page_url", "after"),
