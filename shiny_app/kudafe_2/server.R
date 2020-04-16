@@ -19,8 +19,8 @@ server <- function(input, output) {
       filter(page_url %in% c("/","/webinars/")) %>% 
       filter(input$daterange1[1] <= date & date < input$daterange1[2] ) %>% 
       ggplot() +
-      aes_string("date",input$variable, color  = "page_url" )+
-      geom_line(size = 1)+
+      aes_string("date",input$variable, fill  = "page_url" )+
+      geom_col(size = 1)+
       ggtitle("Page views of CodeClan main page against Webinars page over the time.")+
       xlab("Date")+
       ylab("Number of pageviews") +
@@ -93,12 +93,20 @@ server <- function(input, output) {
       top_n(10) %>% 
       ggplot() +
       aes(x = reorder(landing_page_url, sum), y = sum, fill = landing_page_url) +
-      geom_col()+
+      geom_col(show.legend = FALSE)+
       coord_flip() +
       ggtitle("Number of webinars page views per landing page") +
       xlab("landing page") +
       ylab("number of webinars page views")+
-      theme(legend.position = "bottom")
+      ylim(0, 300)+
+      theme(
+            axis.text.y=element_blank(),
+            axis.ticks.y=element_blank()) + 
+      geom_text(aes(
+        label = landing_page_url,
+        y = sum + 10,
+        hjust = 0
+      ))
   })
   
   output$previouse <- renderPlot({
@@ -110,12 +118,20 @@ server <- function(input, output) {
       top_n(10) %>% 
       ggplot() +
       aes(x = reorder(previous_page_url, sum), y = sum, fill = previous_page_url) +
-      geom_col()+
+      geom_col(show.legend = FALSE)+
       coord_flip() +
       ggtitle("Number of webinars page views per previous page") +
       xlab("previous page") +
       ylab("number of webinars page views")+
-      theme(legend.position = "bottom")
+      ylim(0, 300)+
+      theme(
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank()) + 
+      geom_text(aes(
+        label = previous_page_url,
+        y = sum + 10,
+        hjust = 0
+      ))
     
     
   }) 

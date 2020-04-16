@@ -115,21 +115,24 @@ ui <- fluidPage(
     tabPanel("User journey",
              fluidPage(
                fluidRow(
-                 column(6,selectInput("variable3", "What to plot?",
+                 column(4,selectInput("variable3", "What to plot?",
                                       choices = c("pageviews",
                                                   "unique_pageviews")
                                       )
                         ),
                  
-                 column(6,dateRangeInput("daterange3", "Date range:",
+                 column(4,dateRangeInput("daterange3", "Date range:",
                                          start = min(all_pages$date),
                                          end = max(all_pages$date),
                                          min = min(all_pages$date),
                                          max =max(all_pages$date)
                           )
-                 )
+                        ),
+                # column(4,
+                #               "Plot3",
+                #               plotOutput("exit")
+                #               )
 
-                 
                ),
                
                fluidRow(
