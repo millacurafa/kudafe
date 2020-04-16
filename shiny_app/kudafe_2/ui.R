@@ -59,7 +59,7 @@ ui <- fluidPage(
     tabPanel("Sources of web traffic",
              hr(),
              fluidRow(
-               column(6,
+               column(4,
                # Copy the chunk below to make a group of checkboxes
                dateRangeInput("daterange2", "Date range:",
                               start = min(all_pages$date),
@@ -68,12 +68,43 @@ ui <- fluidPage(
                               max =max(all_pages$date)
                               )
                ),
-               column(6,
+               column(4,
                selectInput("variable2", "What to plot?",
                            choices = c("pageviews",
                                        "unique_pageviews")
                            )
-               )
+               ),
+               column(4,
+                      column(4,
+                      fluidRow(
+                        icon("google", lib = "font-awesome"), "Google", textOutput("google")
+                      ),
+                      fluidRow(
+                        icon("envelope-open-text", lib = "font-awesome"), "Email", textOutput("email")
+                      ),
+                      fluidRow(
+                        icon("linkedin-in", lib = "font-awesome"), "LinkedIn", textOutput("linkedin")
+                      ),#Closes internal column
+                     
+                      ),
+                      column(4,
+                             fluidRow(
+                               icon("facebook-f", lib = "font-awesome"), "Facebook", textOutput("facebook")
+                             ),
+                             fluidRow(
+                               icon("instagram", lib = "font-awesome"), "Instagram", textOutput("instagram")
+                             ),
+                             fluidRow(
+                               icon("twitter", lib = "font-awesome"), "Twitter", textOutput("twitter")
+                             ),
+                             
+                      ),#Closes internal column
+                      column(4, 
+                             fluidRow(
+                               icon("reddit", lib = "font-awesome"), "Reddit", textOutput("reddit")
+                             )
+                             )#Closes internal column
+                      ) #Closes column
                
                                 
              ),

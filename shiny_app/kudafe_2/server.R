@@ -38,6 +38,24 @@ server <- function(input, output) {
     source_media %>% 
       filter(input$daterange2[1] < date & date < input$daterange2[2])
   })
+  
+  sources_social_networks <- reactive({
+    var2 = sym(input$variable2)
+    sources <- filtered_source() %>% 
+              group_by(source) %>% 
+              summarise(sum = sum(!!var2))
+    
+    facebook_m_num <- sources %>% 
+      filter(source == "m.facebook.com") %>% 
+      pull(sum)
+    
+  })
+  
+  output$facebook <- renderText({
+    sources_social_networks()
+    
+  })
+  
   output$source <- renderPlot({
     var2 = sym(input$variable2)
     filtered_source() %>% 
@@ -56,7 +74,6 @@ server <- function(input, output) {
   
   output$social_network <- renderPlot({
     var = sym(input$variable2)
-    
     filtered_source() %>% 
       group_by(social_network) %>% 
       summarise(sum = sum(!!var)) %>% 
