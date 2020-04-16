@@ -109,6 +109,30 @@ server <- function(input, output) {
       ))
   })
   
+  totalvisitors <- reactive({
+    var = sym(input$variable3)
+    filerting(landing_page) %>% 
+      summarise(sum(!!var)) %>% 
+      pull() 
+  })
+  output$totalVisitors <- renderText({
+    totalvisitors()
+  })
+  
+  totalwebinars <- reactive({
+    filerting(exit_page) %>% 
+      summarise(n()) %>% 
+      pull() 
+  })
+  
+  output$totalWebinars <- renderText({
+    totalwebinars()
+  })
+  
+    output$totalYield <- renderText({
+      paste((totalwebinars() / totalvisitors() *100) + " %")
+  })
+  
   output$previouse <- renderPlot({
     var = sym(input$variable3)
     filerting(previouse_page) %>% 

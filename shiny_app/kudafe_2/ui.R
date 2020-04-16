@@ -57,6 +57,7 @@ ui <- fluidPage(
     ),
     # ---- Second tab to be created ----
     tabPanel("Sources of web traffic",
+             hr(),
              fluidRow(
                column(6,
                # Copy the chunk below to make a group of checkboxes
@@ -114,6 +115,7 @@ ui <- fluidPage(
     # ---- Third tab to be created ----
     tabPanel("User journey",
              fluidPage(
+               hr(),
                fluidRow(
                  column(4,selectInput("variable3", "What to plot?",
                                       choices = c("pageviews",
@@ -128,11 +130,14 @@ ui <- fluidPage(
                                          max =max(all_pages$date)
                           )
                         ),
-                # column(4,
-                #               "Plot3",
-                #               plotOutput("exit")
-                #               )
-
+                 column(4, 
+                        column(4, "Visitors: ",
+                               textOutput("totalVisitors")),
+                        column(4, "Webinars: ",
+                               textOutput("totalWebinars")),
+                        column(4, "Engagement: ",
+                               textOutput("totalYield"))
+                 )
                ),
                
                fluidRow(
@@ -148,7 +153,9 @@ ui <- fluidPage(
                  column(4,
                         "Plot3",
                         plotOutput("exit")
-                        )
+                        ),
+                 
+                 
                )
              )
              #Closes third tab
@@ -157,6 +164,7 @@ ui <- fluidPage(
     tabPanel("Miscellaneous",
              #Closes fourth tab
              fluidPage(
+               hr(),
                fluidRow(
 
                  column(6,
