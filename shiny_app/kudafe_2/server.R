@@ -145,7 +145,6 @@ server <- function(input, output) {
       arrange(desc(sum)) %>% 
       top_n(15) %>% 
       ggplot() +
-      aes_string("date",input$variable4, color  = "page_url" )+
       aes(x = reorder(has_social_source_referral, sum), y = sum, fill = has_social_source_referral) +
       geom_col()+
       coord_flip() +

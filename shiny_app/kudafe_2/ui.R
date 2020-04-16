@@ -169,7 +169,7 @@ ui <- fluidPage(
                                     )
                         ),
                  
-                 
+               ),
 
                  fluidRow(
                       column(6,
@@ -182,12 +182,12 @@ ui <- fluidPage(
                              )
                  )
                  
-               )
-             )
-            )
+               ) #Closes fluid page
+             ) #Closes tab panel
+            
     #Closes tabset panel
   )
   #Closes fluidPage
 )
-)
+
 
