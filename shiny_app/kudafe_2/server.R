@@ -19,14 +19,16 @@ server <- function(input, output) {
       filter(page_url %in% c("/","/webinars/")) %>% 
       filter(input$daterange1[1] <= date & date < input$daterange1[2] ) %>% 
       ggplot() +
-      aes(date,pageviews, color  = page_url )+
+      aes_string("date",input$variable, color  = "page_url" )+
       geom_line(size = 1)+
       ggtitle("Page views of CodeClan main page against Webinars page over the time.")+
       xlab("Date")+
       ylab("Number of pageviews") +
       theme(legend.title = element_text(colour="black", size=12))+
       guides(colour = guide_legend(override.aes = list(size=4)))+
-      scale_color_discrete(name="Visited url")
+      scale_color_discrete(name="Visited url")+
+      theme_minimal()
+    
     
     
   })
