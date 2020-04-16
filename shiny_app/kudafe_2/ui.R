@@ -155,18 +155,20 @@ ui <- fluidPage(
                fluidRow(
 
                  column(6,
-                        dateRangeInput("daterange4", "Date range:",
-                                       start = min(all_pages$date),
-                                       end = max(all_pages$date),
-                                       min = min(all_pages$date),
-                                       max =max(all_pages$date)
-                                      ),
-                        ),
-                 column(6,
                         selectInput("variable4", "What to plot?",
-                                    choices = c("pageviews",
-                                                "unique_pageviews")
+                                      choices = c("pageviews",
+                                                  "unique_pageviews")
+                        
                                     )
+                        ),
+                 column(6, 
+                        dateRangeInput("daterange4", "Date range:",
+                                          start = min(all_pages$date),
+                                          end = max(all_pages$date),
+                                          min = min(all_pages$date),
+                                          max =max(all_pages$date)
+                 )
+                        
                         ),
                  
                ),
