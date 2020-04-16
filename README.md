@@ -47,6 +47,10 @@ A step by step series of examples that tell you how to get a development env run
 
 ```
 git clone https://github.com/millacurafa/kudafe
+
+or via SSH
+
+git clone git@github.com:millacurafa/kudafe.git
 ```
 
 and open the Rproject shiny_app.Rproj
@@ -90,11 +94,11 @@ Add additional notes about how to deploy this on a live system
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://github.com/millacurafa/kudafe/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+We use [Git](https://git-scm.com/) for versioning. For the versions available, see the [tags on this repository](https://github.com/millacurafa/kudafe/tags). 
 
 ## Authors
 
@@ -107,7 +111,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Thanks to Kuba, David and Felipe
+* Thanks to Kuba, David, Felipe for creating this project
 * and Steph, Aileen, Del and Mairi for support
 
 
