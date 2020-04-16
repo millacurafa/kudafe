@@ -153,6 +153,7 @@ ui <- fluidPage(
              #Closes fourth tab
              fluidPage(
                fluidRow(
+
                  column(6,
                         dateRangeInput("daterange4", "Date range:",
                                        start = min(all_pages$date),
@@ -169,6 +170,7 @@ ui <- fluidPage(
                         ),
                  
                  
+
                  fluidRow(
                       column(6,
                              "Plot1",
@@ -186,5 +188,6 @@ ui <- fluidPage(
     #Closes tabset panel
   )
   #Closes fluidPage
+)
 )
 

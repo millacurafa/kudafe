@@ -46,7 +46,7 @@ server <- function(input, output) {
       arrange(desc(sum)) %>% 
       top_n(15) %>% 
       ggplot() +
-      aes(x = reorder(source, sum), y = sum) +
+      aes(x = reorder(source, sum), y = sum, fill = source) +
       geom_col()+
       coord_flip() +
       ggtitle("Number of webinars page views per source") +
@@ -62,7 +62,7 @@ server <- function(input, output) {
       arrange(desc(sum)) %>% 
       top_n(15) %>% 
       ggplot() +
-      aes(x = reorder(social_network, sum), y = sum) +
+      aes(x = reorder(social_network, sum), y = sum, fill = social_network) +
       geom_col()+
       coord_flip() +
       ggtitle("Number of webinars page views per social network") +
@@ -91,7 +91,7 @@ server <- function(input, output) {
       arrange(desc(sum)) %>% 
       top_n(10) %>% 
       ggplot() +
-      aes(x = reorder(landing_page_url, sum), y = sum) +
+      aes(x = reorder(landing_page_url, sum), y = sum, fill = landing_page_url) +
       geom_col()+
       coord_flip() +
       ggtitle("Number of webinars page views per landing page") +
@@ -107,7 +107,7 @@ server <- function(input, output) {
       arrange(desc(sum)) %>% 
       top_n(10) %>% 
       ggplot() +
-      aes(x = reorder(previous_page_url, sum), y = sum) +
+      aes(x = reorder(previous_page_url, sum), y = sum, fill = previous_page_url) +
       geom_col()+
       coord_flip() +
       ggtitle("Number of webinars page views per previous page") +
@@ -123,7 +123,7 @@ server <- function(input, output) {
       group_by(left_from_webinars) %>% 
       summarise(number_rows = n()) %>% 
       ggplot() +
-      aes(x = left_from_webinars, y = number_rows) +
+      aes(x = left_from_webinars, y = number_rows, fill = left_from_webinars) +
       geom_col()+
       coord_flip() +
       ggtitle("Number of people who left the CodeClan web, depending on whether or not they left from webinars") +
@@ -145,7 +145,8 @@ server <- function(input, output) {
       arrange(desc(sum)) %>% 
       top_n(15) %>% 
       ggplot() +
-      aes(x = reorder(has_social_source_referral, sum), y = sum) +
+      aes_string("date",input$variable4, color  = "page_url" )+
+      aes(x = reorder(has_social_source_referral, sum), y = sum, fill = has_social_source_referral) +
       geom_col()+
       coord_flip() +
       ggtitle("Number of webinars page views depending on whether they come from a social source referral") +
@@ -167,7 +168,7 @@ output$plot_4_2 <- renderPlot({
     group_by(left_from_webinars) %>% 
     summarise(number_rows = n()) %>% 
     ggplot() +
-    aes(x = left_from_webinars, y = number_rows) +
+    aes(x = left_from_webinars, y = number_rows, fill = left_from_webinars) +
     geom_col()+
     coord_flip() +
     ggtitle("Number of people who left the CodeClan web, depending on whether or not they left from webinars") +
