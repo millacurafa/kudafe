@@ -1,3 +1,5 @@
+source("../ui_server/global.R")
+
 head(previouse_page)
 
 # Number of webinars page views per previous page---------------------------------------------
@@ -45,6 +47,7 @@ landing_page %>%
   ggtitle("Number of webinars page views per landing page") +
   xlab("landing page") +
   ylab("number of webinars page views")
+
 
 # Number of webinars unique page views per landing page---------------------------------------------
 

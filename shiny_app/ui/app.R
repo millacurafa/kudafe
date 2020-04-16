@@ -1,9 +1,8 @@
 
 library(shiny)
 library(shinythemes)
-library(tidyverse)
-
-
+#library(d3Dashboard)
+#library(tidyverse)
 
 source("../ui_server/app_server.R")
 # Define UI for app that draws a histogram ----
@@ -17,48 +16,47 @@ ui <- fluidPage(
   #Here we start working with the first tabs by generating a TAB holder/panel
   tabsetPanel(
     # ---- First tab to be created ----
-    tabPanel("Random Sample Plot",
+    tabPanel("Website overview",
   
   # ---- Sidebar layout with input and output definitions ----
   sidebarLayout(
-    
-    # ---- Sidebar panel for inputs ----
+    # ---- Sidebar panel for inputs -1---
     sidebarPanel(
-      
-      # ---- Input: Slider for the number of bins ----
-      sliderInput(inputId = "bins",
-                  label = "Number of bins:",
-                  min = 1,
-                  max = 50,
-                  value = 30),
       # Create range selector
       dateRangeInput("dates", label = h3("Date range")),
       hr(),
       fluidRow(column(4, verbatimTextOutput("value"))),
-      
+      hr(),
+      # Copy the chunk below to make a group of checkboxes
+      checkboxGroupInput("checkGroup", label = h3("Checkbox group"), 
+                         choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3),
+                         selected = 1),
+      hr(),
     ),
     
     # ---- Ends Sidebar panel for inputs ----
     # ---- Main panel for displaying outputs ----
     mainPanel(
+         # Output: ----dotPlot ----
+        plotOutput(outputId = "dotPlot")
+        # ---- Ends Main panel for displaying outputs ----
       
-      # Output: Histogram ----
-      plotOutput(outputId = "distPlot")
-      
-        )
-    # ---- Ends Main panel for displaying outputs ----
+        ) 
+    # ---- Closes Sidebar layout with input and output definitions ----
+ 
       )
-    #Closes first tab
-    ),
+   
+    ), #Closes first tab
   # ---- Second tab to be created ----
-  tabPanel("Sources Plot",
+  tabPanel("Sources of trafic",
            sidebarPanel(
-             # Copy the chunk below to make a group of checkboxes
-             checkboxGroupInput("checkGroup", label = h3("Checkbox group"), 
-                                choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3),
-                                selected = 1),
+             # ---- Input: Slider for the number of bins ----
+             sliderInput(inputId = "bins",
+                         label = "Number of bins:",
+                         min = 1,
+                         max = 50,
+                         value = 30),
              hr(),
-             
              #Starts fluidRow for the sidebar panel
              fluidRow(
                titlePanel("Referrals"),
@@ -134,28 +132,57 @@ ui <- fluidPage(
            ), #Closes sidebar panel
            #Starts main panel
            mainPanel(
-           #
-           #    Output: ----Histogram ----
-           #   plotOutput(outputId = "dotPlot")
-           #
-           # ), # ---- Closes Histogram ----
-"Trial text"
-           #Closes main panel
+             fluidRow(
+             # Output: General Source ncluding socials ----
+             plotOutput(outputId = "sourcePages1")
+             ),
+             # Output: Social sources  ----
+             fluidRow(
+              # plotOutput(outputId = "socialsPlot")
+             )
+             
             )
-           #Closes second tab
-           ),
+          
+           ), #Closes second tab
   
   # ---- Third tab to be created ----
-  tabPanel("Random General Plot",
-           #Closes third tab
-  ),
+  tabPanel("User journey",
+           fluidRow(
+             titlePanel("Referrals"),
+             #Starts a new column to hold symbols
+             # Output: Source Pages ----
+             column(4,plotOutput(outputId = "sourcePages")),
+             # Output: Previous Pages ----
+             column(4, plotOutput(outputId = "previousPages")),
+             # Output: Final Pages ----
+             column(4, "Final page")
+           ) # Closes fluid row
+  ), #Closes third tab
+  
   # ---- Fourth tab to be created ----
-  tabPanel("Random Information",
-           #Closes fourth tab
-  )
-    #Closes tabset panel
-  )
-#Closes fluidPage
-)
+  tabPanel("Miscellaneous",
+           fluidRow(
+             titlePanel("Referrals"),
+             #Starts a new column to hold symbols
+             # Output: General Referrals ----
+             column(4, plotOutput(outputId = "referrals")),
+             # Output: Per Medium   ----
+             column(4, plotOutput(outputId = "per_medium")),
+             column(4, "Final page")
+           ), # Closes fluid row
+           fluidRow(
+             titlePanel("Referrals"),
+             #Starts a new column to hold symbols
+             # Output: Random dummy data ----
+             column(4,"Source"),
+             column(4, "Previous page"),
+             column(4, "Final page")
+           ) # Closes fluid row
+           
+  ) #Closes fourth tab
+   
+  ) #Closes tabset panel
+
+)#Closes fluidPage
 
 shinyApp(ui, server)
