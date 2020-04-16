@@ -57,18 +57,22 @@ ui <- fluidPage(
     ),
     # ---- Second tab to be created ----
     tabPanel("Sources of web traffic",
-             sidebarPanel(
+             fluidRow(
+               column(6,
                # Copy the chunk below to make a group of checkboxes
                dateRangeInput("daterange2", "Date range:",
                               start = min(all_pages$date),
                               end = max(all_pages$date),
                               min = min(all_pages$date),
                               max =max(all_pages$date)
-                              ),
+                              )
+               ),
+               column(6,
                selectInput("variable2", "What to plot?",
                            choices = c("pageviews",
                                        "unique_pageviews")
                            )
+               )
                
                                 
              ),
@@ -78,7 +82,7 @@ ui <- fluidPage(
                
              #Closes sidebar panel
              #Starts main panel
-             mainPanel(
+             # mainPanel(
                fluidRow(
                  #Starts a new column to hold symbols
                  column(6,
@@ -101,9 +105,9 @@ ui <- fluidPage(
                #   plotOutput(outputId = "dotPlot")
                #
                # ), # ---- Closes Histogram ----
-               "Trial text"
-               #Closes main panel
-             )
+               # "Trial text"
+               #  ) Closes main panel
+            
              #Closes second tab
     ),
     
@@ -124,11 +128,7 @@ ui <- fluidPage(
                                          max =max(all_pages$date)
                           )
                  )
-                 
-                                
-                 
-                             
-                 
+
                  
                ),
                

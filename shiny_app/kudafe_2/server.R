@@ -53,6 +53,7 @@ server <- function(input, output) {
       xlab("source") +
       ylab("number of webinars page views")
     })
+  
   output$social_network <- renderPlot({
     var = sym(input$variable2)
     
@@ -96,7 +97,8 @@ server <- function(input, output) {
       coord_flip() +
       ggtitle("Number of webinars page views per landing page") +
       xlab("landing page") +
-      ylab("number of webinars page views")
+      ylab("number of webinars page views")+
+      theme(legend.position = "bottom")
   })
   
   output$previouse <- renderPlot({
@@ -112,7 +114,8 @@ server <- function(input, output) {
       coord_flip() +
       ggtitle("Number of webinars page views per previous page") +
       xlab("previous page") +
-      ylab("number of webinars page views")
+      ylab("number of webinars page views")+
+      theme(legend.position = "bottom")
     
     
   }) 
