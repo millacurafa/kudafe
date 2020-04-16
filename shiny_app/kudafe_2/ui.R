@@ -6,11 +6,11 @@ ui <- fluidPage(
   theme = shinytheme("darkly"),
   
   # App title ----
-  titlePanel("CodeClan Webinar's web trafic analysis"),
+  titlePanel("CodeClan Webinar's web traffic analysis"),
   #Here we start working with the first tabs by generating a TAB holder/panel
   tabsetPanel(
     # ---- First tab to be created ----
-    tabPanel("Random Sample Plot",
+    tabPanel("Website overview",
              
              # ---- Sidebar layout with input and output definitions ----
              sidebarLayout(
@@ -36,7 +36,7 @@ ui <- fluidPage(
                  
                  fluidRow(
                    column(4,
-                          "Place holder"
+                          ""
                           
                    )
                    ),
@@ -56,7 +56,7 @@ ui <- fluidPage(
              #Closes first tab
     ),
     # ---- Second tab to be created ----
-    tabPanel("Sources Plot",
+    tabPanel("Sources of web traffic",
              sidebarPanel(
                # Copy the chunk below to make a group of checkboxes
                dateRangeInput("daterange2", "Date range:",
@@ -102,7 +102,7 @@ ui <- fluidPage(
     ),
     
     # ---- Third tab to be created ----
-    tabPanel("Random General Plot",
+    tabPanel("User journey",
              fluidPage(
                fluidRow( 
                  dateRangeInput("daterange3", "Date range:",
@@ -132,7 +132,7 @@ ui <- fluidPage(
              #Closes third tab
     ),
     # ---- Fourth tab to be created ----
-    tabPanel("Random Information",
+    tabPanel("Miscellaneous",
              #Closes fourth tab
              fluidPage(
                fluidRow(
