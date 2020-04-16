@@ -113,7 +113,8 @@ server <- function(input, output) {
     var = sym(input$variable3)
     filerting(landing_page) %>% 
       summarise(sum(!!var)) %>% 
-      pull() 
+      pull() %>% 
+      as.numeric()
   })
   output$totalVisitors <- renderText({
     totalvisitors()
@@ -122,7 +123,8 @@ server <- function(input, output) {
   totalwebinars <- reactive({
     filerting(exit_page) %>% 
       summarise(n()) %>% 
-      pull() 
+      pull() %>% 
+      as.numeric()
   })
   
   output$totalWebinars <- renderText({
@@ -130,8 +132,8 @@ server <- function(input, output) {
   })
   
     output$totalYield <- renderText({
-      paste((totalwebinars() / totalvisitors() *100) + " %")
-  })
+     totalwebinars() / totalvisitors()
+  }) 
   
   output$previouse <- renderPlot({
     var = sym(input$variable3)
@@ -171,7 +173,8 @@ server <- function(input, output) {
       coord_flip() +
       ggtitle("Number of people who left the CodeClan web, depending on whether or not they left from webinars") +
       xlab("left from webinars") +
-      ylab("number of people who left the CodeClan web")
+      ylab("number of people who left the CodeClan web") +
+      theme(legend.position = "top")
     
   })
   
