@@ -1,3 +1,4 @@
+library(lubridate)
 # Define server logic required to draw a histogram ----
 server <- function(input, output) {
   
@@ -19,7 +20,7 @@ server <- function(input, output) {
       filter(page_url %in% c("/","/webinars/")) %>% 
       filter(input$daterange1[1] <= date & date < input$daterange1[2] ) %>% 
       ggplot() +
-      aes_string("date",input$variable, fill  = "page_url" )+
+      aes_string("date", input$variable, fill  = "page_url" )+
       geom_col(size = 1)+
       ggtitle("Page views of CodeClan main page against Webinars page over the time.")+
       xlab("Date")+
@@ -27,7 +28,14 @@ server <- function(input, output) {
       theme(legend.title = element_text(colour="black", size=12))+
       guides(colour = guide_legend(override.aes = list(size=4)))+
       scale_color_discrete(name="Visited url")+
-      theme_minimal()
+      theme_minimal() +
+      theme(axis.text.x = element_text(margin = margin(t = 1.4, unit = "cm")),
+            axis.ticks.length.x = unit(-1, "cm"),)+
+      geom_text(aes(
+        label = wday(date, label=TRUE),
+        y =  -5,
+        hjust = 1
+      ), color = "gray", angle = 45)
     
     
     
