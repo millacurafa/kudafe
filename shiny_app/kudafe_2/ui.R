@@ -63,7 +63,12 @@ ui <- fluidPage(
                               start = min(all_pages$date),
                               end = max(all_pages$date),
                               min = min(all_pages$date),
-                              max =max(all_pages$date))
+                              max =max(all_pages$date)
+                              ),
+               selectInput("variable2", "What to plot?",
+                           choices = c("pageviews",
+                                       "unique_pageviews"))
+               
                                 
              ),
                hr(),
@@ -104,12 +109,24 @@ ui <- fluidPage(
     # ---- Third tab to be created ----
     tabPanel("User journey",
              fluidPage(
-               fluidRow( 
-                 dateRangeInput("daterange3", "Date range:",
-                                        start = min(all_pages$date),
-                                        end = max(all_pages$date),
-                                        min = min(all_pages$date),
-                                        max =max(all_pages$date))
+               fluidRow(
+                 column(6,dateRangeInput("daterange3", "Date range:",
+                                         start = min(all_pages$date),
+                                         end = max(all_pages$date),
+                                         min = min(all_pages$date),
+                                         max =max(all_pages$date)
+                                         )
+                        ),
+                 
+                 column(6,selectInput("variable3", "What to plot?",
+                                      choices = c("pageviews",
+                                                  "unique_pageviews")
+                 ))
+                 
+                                
+                 
+                             
+                 
                  
                ),
                
@@ -136,12 +153,22 @@ ui <- fluidPage(
              #Closes fourth tab
              fluidPage(
                fluidRow(
-                 dateRangeInput("daterange4", "Date range:",
-                                start = min(all_pages$date),
-                                end = max(all_pages$date),
-                                min = min(all_pages$date),
-                                max =max(all_pages$date)
-                                ),
+                 column(6,
+                        dateRangeInput("daterange4", "Date range:",
+                                       start = min(all_pages$date),
+                                       end = max(all_pages$date),
+                                       min = min(all_pages$date),
+                                       max =max(all_pages$date)
+                                      ),
+                        ),
+                 column(6,
+                        selectInput("variable4", "What to plot?",
+                                    choices = c("pageviews",
+                                                "unique_pageviews")
+                                    )
+                        ),
+                 
+                 
                  fluidRow(
                       column(6,
                              "Plot1",
