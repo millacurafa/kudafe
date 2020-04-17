@@ -79,7 +79,7 @@ Give an example
 Explain what these tests test and why
 
 ```
-Give an example
+Everything is writtern using camelCase as it's the standard for shiny apps.
 ```
 
 ## Deployment
@@ -88,9 +88,9 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-*
-*
-*
+* R studio
+* Google Analytics
+* Shiny
 
 ## Contributing
 
