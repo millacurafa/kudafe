@@ -71,7 +71,7 @@ Explain how to run the automated tests for this system
 Explain what these tests test and why
 
 ```
-Give an example
+MVP for Google Analytics traffic
 ```
 
 ### And coding style tests
@@ -79,7 +79,7 @@ Give an example
 Explain what these tests test and why
 
 ```
-Everything is writtern using camelCase as it's the standard for shiny apps.
+Code is written using the camelCase standard for shiny apps.
 ```
 
 ## Deployment
