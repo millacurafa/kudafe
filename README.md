@@ -71,7 +71,7 @@ Explain how to run the automated tests for this system
 Explain what these tests test and why
 
 ```
-Give an example
+MVP for Google Analytics traffic
 ```
 
 ### And coding style tests
@@ -79,7 +79,7 @@ Give an example
 Explain what these tests test and why
 
 ```
-Give an example
+Code is written using the camelCase standard for shiny apps.
 ```
 
 ## Deployment
@@ -88,9 +88,9 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-*
-*
-*
+* R studio
+* Google Analytics
+* Shiny
 
 ## Contributing
 
