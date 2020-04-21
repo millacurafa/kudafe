@@ -6,7 +6,7 @@ ui <- fluidPage(
   theme = shinytheme("darkly"),
   
   # App title ----
-  titlePanel("CodeClan Webinar's web traffic analysis"),
+  titlePanel("Webinar's web traffic analysis"),
   #Here we start working with the first tabs by generating a TAB holder/panel
   tabsetPanel(
     # ---- First tab to be created ----

@@ -1,0 +1,61 @@
+```{r}
+library(googleAnalyticsR)
+library(keyring)
+library(tidyverse)
+library(lubridate)
+library(janitor)
+library(googleVis)
+
+options(googleAuthR.client_id = keyring::key_get(service = "ga_client_id", keyring = "googleanalytics"))
+
+options(googleAuthR.client_secret = keyring::key_get(service = "ga_client_secret", keyring = "googleanalytics"))
+
+devtools::reload(pkg = devtools::inst("googleAnalyticsR"))
+
+#Authenticate your account
+ga_auth()
+
+1#Get a list of accounts you have access to
+account_list <- ga_account_list()
+
+#ViewID is the way to access the account you want
+viewid<- account_list$viewId[1]
+
+```
+
+```{r}
+page_filter <- dim_filter(
+  dimension = "landingPagePath",
+  operator = "REGEXP",
+  expressions = "webinars")
+homepage_filter <- filter_clause_ga4(list(page_filter))
+
+
+sankey_dt <-  google_analytics(
+  viewid,
+  date_range = c("2020-03-15", as.character(today())),
+  metrics = c("uniquePageviews"),
+  dimensions = c("secondPagePath", "channelGrouping"),
+  dim_filters = homepage_filter,
+  max = -1,
+  anti_sample = TRUE
+)
+sankey_dt <- sankey_dt %>% separate(secondPagePath,into = c("second_path","bin"), sep = "[?]") %>% select(-bin)
+```
+```{r}
+top_10 <- sankey_dt %>% 
+  group_by(second_path) %>% 
+  summarise(upvs = sum(uniquePageviews)) %>%
+  top_n(5, upvs) %>% 
+  arrange(desc(upvs))
+```
+
+```{r}
+sankey_dt <- sankey_dt %>% 
+  semi_join(top_10, by = "second_path")
+```
+```{r}
+s <- gvisSankey(sankey_dt)
+plot(s)
+```
+
